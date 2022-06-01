@@ -6,6 +6,8 @@ This is a small gRPC server for learning.
 
 ## Description  
 
+## Running locally
+
 ## Make commands
 - `make init`  
 Inits the repository removing undesirable files and update dependencies. 
