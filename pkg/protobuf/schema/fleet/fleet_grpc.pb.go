@@ -24,6 +24,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type FleetServiceClient interface {
 	ListVehicles(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*VehicleList, error)
+	AddVehicle(ctx context.Context, in *VehicleRequest, opts ...grpc.CallOption) (*VehicleResponse, error)
 }
 
 type fleetServiceClient struct {
@@ -43,11 +44,21 @@ func (c *fleetServiceClient) ListVehicles(ctx context.Context, in *emptypb.Empty
 	return out, nil
 }
 
+func (c *fleetServiceClient) AddVehicle(ctx context.Context, in *VehicleRequest, opts ...grpc.CallOption) (*VehicleResponse, error) {
+	out := new(VehicleResponse)
+	err := c.cc.Invoke(ctx, "/fleet.FleetService/AddVehicle", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // FleetServiceServer is the server API for FleetService service.
 // All implementations must embed UnimplementedFleetServiceServer
 // for forward compatibility
 type FleetServiceServer interface {
 	ListVehicles(context.Context, *emptypb.Empty) (*VehicleList, error)
+	AddVehicle(context.Context, *VehicleRequest) (*VehicleResponse, error)
 	mustEmbedUnimplementedFleetServiceServer()
 }
 
@@ -57,6 +68,9 @@ type UnimplementedFleetServiceServer struct {
 
 func (UnimplementedFleetServiceServer) ListVehicles(context.Context, *emptypb.Empty) (*VehicleList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListVehicles not implemented")
+}
+func (UnimplementedFleetServiceServer) AddVehicle(context.Context, *VehicleRequest) (*VehicleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddVehicle not implemented")
 }
 func (UnimplementedFleetServiceServer) mustEmbedUnimplementedFleetServiceServer() {}
 
@@ -89,6 +103,24 @@ func _FleetService_ListVehicles_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _FleetService_AddVehicle_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(VehicleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FleetServiceServer).AddVehicle(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/fleet.FleetService/AddVehicle",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FleetServiceServer).AddVehicle(ctx, req.(*VehicleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // FleetService_ServiceDesc is the grpc.ServiceDesc for FleetService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -99,6 +131,10 @@ var FleetService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListVehicles",
 			Handler:    _FleetService_ListVehicles_Handler,
+		},
+		{
+			MethodName: "AddVehicle",
+			Handler:    _FleetService_AddVehicle_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

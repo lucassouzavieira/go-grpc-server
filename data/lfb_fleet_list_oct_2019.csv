@@ -1,0 +1,406 @@
+Fleet No,Operational Status,LFB,Make,Model,Type of Vehicle,Vehicle Category,Reg Year,Vehicle Life
+ALP10,RESERVE,LFB,Daimler,Econic,Aerial Ladder Platform,N3,2007,15
+ALP11,RESERVE,LFB,Daimler,Econic,Aerial Ladder Platform,N3,2007,15
+ALP12,RESERVE,LFB,Daimler,Econic,Aerial Ladder Platform,N3,2007,15
+ALP13,RESERVE,LFB,Daimler,Econic,Aerial Ladder Platform,N3,2007,15
+ALP14,ACTIVE,LFB,Mercedes,Econic,Aerial Ladder Platform,N3,2008,15
+ALP15,ACTIVE,LFB,Mercedes,Econic,Aerial Ladder Platform,N3,2008,15
+ALP16,ACTIVE,LFB,Daimler,Econic,Aerial Ladder Platform,N3,2008,15
+ALP17,ACTIVE,LFB,Daimler,Econic,Aerial Ladder Platform,N3,2008,15
+ALP7M,ACTIVE,LFB,Mercedes,Econic 2628LL,Aerial Ladder Platform,N3,2002,15
+ALP8M,ACTIVE,LFB,Mercedes,Econic 2628LL,Aerial Ladder Platform,N3,2002,15
+ALP9M,ACTIVE,LFB,Mercedes,Econic 2628LL,Aerial Ladder Platform,N3,2002,15
+AWD01,ACTIVE,LFB,LANDROVER,CHALLENGER 6x6,6 x 6 All Wheel Drive,N1,2003,10
+BFU1,ACTIVE,LFB,Mercedes,Actros,Bulk Foam Unit,N3,2010,15
+BFU2,ACTIVE,LFB,Mercedes,Actros,Bulk Foam Unit,N3,2010,15
+BFU3,ACTIVE,LFB,Mercedes,Actros,Bulk Foam Unit,N3,2010,15
+C955,ACTIVE,LFB,Vauxhall,Astra,Car Estate,M1,2009,5
+CC 001,ACTIVE,LFB,Mercedes Benz,Sprinter,Panel Van,N1,2016,4
+CE788,TRAINING,LFB,Ford,Mondeo Zetec 1.5 TDCI,Estate Car,M1,2016,5
+CE789,TRAINING,LFB,Ford,Mondeo Zetec 1.5 TDCI,Estate Car,M1,2016,5
+CH774,ACTIVE,LFB,Mitsubishi,Outlander PHEV,Car,M1,2016,5
+CH775,ACTIVE,LFB,Mitsubishi,Outlander PHEV,Car,M1,2016,5
+CH776,ACTIVE,LFB,Mitsubishi,Outlander PHEV,Car,M1,2016,5
+CH777,ACTIVE,LFB,Volkswagen,Golf GTE,Car,M1,2016,5
+CH778,ACTIVE,LFB,Volkswagen,Golf GTE,Car,M1,2016,5
+CH779,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH780,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH781,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH782,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH783,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH784,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH785,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH786,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH787,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH788,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH789,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH790,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH791,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH792,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH793,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH794,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH795,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH796,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH797,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH798,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH799,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH800,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH801,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH802,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH803,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH804,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH805,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH806,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH807,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH808,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH809,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH810,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH811,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH812,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH813,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH814,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH815,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH816,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH817,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH818,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH819,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH820,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH821,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH822,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH823,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH824,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH825,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH826,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH827,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH828,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH829,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH830,ACTIVE,LFB,BMW,i3 AC REx,Car,M1,2016,5
+CH831,ACTIVE,LFB,Mitsubishi,Outlander ,Car,M1,2019,5
+CH832,ACTIVE,LFB,Mitsubishi,Outlander ,Car,M1,2019,5
+CH833,ACTIVE,LFB,Mitsubishi,Outlander ,Car,M1,2019,5
+CSU1,ACTIVE,LFB,Mercedes,1223nR,Command Support Unit,N2,2006,12
+CSU2,ACTIVE,LFB,Mercedes,1223nR,Command Support Unit,N2,2006,12
+CSU3,ACTIVE,LFB,Mercedes,1223nR,Command Support Unit,N2,2007,12
+CSU4,ACTIVE,LFB,Mercedes,1223nR,Command Support Unit,N2,2007,12
+CSU5,ACTIVE,LFB,Mercedes,1223nR,Command Support Unit,N2,2007,12
+CSU6,ACTIVE,LFB,Mercedes,1223nR,Command Support Unit,N2,2007,12
+CSU7,ACTIVE,LFB,Mercedes,1223nR,Command Support Unit,N2,2007,12
+CSU8,ACTIVE,LFB,Mercedes,1223nR,Command Support Unit,N2,2007,12
+CSU9,RESERVE,LFB,Mercedes,1223nR,Command Support Unit,N2,2007,12
+CTU1,TRAINING,LFB,Vauxhall,Vivaro SWB,Panel Van,N1,2006,7
+DIM101,ACTIVE,LFB,Iveco,Daily,Detection Identification and Monitoring,N2,2009,10
+DPL1101,ACTIVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2002,12
+DPL1209,TRAINING,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2006,12
+DPL1210,TRAINING,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2006,12
+DPL1212,ACTIVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1213,TRAINING,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1214,TRAINING,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1215,TRAINING,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1217,TRAINING,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1218LG,FLOAT,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1220,TRAINING,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1222,TRAINING,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1223LG,FLOAT,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1225LG,FLOAT,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1226LG,ACTIVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1229,FLOAT,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1230,ACTIVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1231LG,FLOAT,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1233,FLOAT,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1236,TRAINING,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1240,TRAINING,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1242,TRAINING,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1243LG,FLOAT,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1246,FLOAT,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1248LG,FLOAT,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1249,TRAINING,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1250,ACTIVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1251,ACTIVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1253,TRAINING,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1254,FLOAT,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1255,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1258LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1260LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1261LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1262LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1263,ACTIVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1264LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1266LG,ACTIVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1267LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1268LG,ACTIVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1269LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1270,ACTIVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1272LG,PENDING,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1273,PENDING,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1275LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1276LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1277LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1278,TRAINING,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1279LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1280LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1281LG,ACTIVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1283LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1284LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1285LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1286LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1288LG,ACTIVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1290LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1291LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1293LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1294,ACTIVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1295LG,TRAINING,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1296LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1298LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1299LG,TRAINING,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1300LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1301LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1302LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1303LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1305LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1306LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1307LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL1308LG,RESERVE,LFB,Mercedes,Atego 1325F,Pumping Appliance,N3,2007,12
+DPL150,TRAINING,LFB,Mercedes Benz,Atego 1327,Pumping Appliance,N3,2016,12
+DPL151,ACTIVE,LFB,Mercedes Benz,Atego 1327,Pumping Appliance,N3,2017,12
+DPL152,ACTIVE,LFB,Mercedes Benz,Atego 1327,Pumping Appliance,N3,2017,12
+DPL153,ACTIVE,LFB,Mercedes Benz,Atego 1327,Pumping Appliance,N3,2017,12
+DPL154,ACTIVE,LFB,Mercedes Benz,Atego 1327,Pumping Appliance,N3,2017,12
+DPL155,ACTIVE,LFB,Mercedes Benz,Atego 1327,Pumping Appliance,N3,2017,12
+DPL156,ACTIVE,LFB,Mercedes Benz,Atego 1327,Pumping Appliance,N3,2017,12
+DPL157,ACTIVE,LFB,Mercedes Benz,Atego 1327,Pumping Appliance,N3,2017,12
+DPL158,ACTIVE,LFB,Mercedes Benz,Atego 1327,Pumping Appliance,N3,2017,12
+DPL159,ACTIVE,LFB,Mercedes Benz,Atego 1327,Pumping Appliance,N3,2017,12
+DPL160,ACTIVE,LFB,Mercedes Benz,Atego 1327,Pumping Appliance,N3,2017,12
+DPL161,ACTIVE,LFB,Mercedes Benz,Atego 1327,Pumping Appliance,N3,2017,12
+DPL162,ACTIVE,LFB,Mercedes Benz,Atego 1327,Pumping Appliance,N3,2017,12
+DPL163,ACTIVE,LFB,Mercedes Benz,Atego 1327,Pumping Appliance,N3,2017,12
+DPL164,ACTIVE,LFB,Mercedes Benz,Atego 1327,Pumping Appliance,N3,2017,12
+DPL165,ACTIVE,LFB,Mercedes Benz,Atego 1327,Pumping Appliance,N3,2017,12
+DPL166,ACTIVE,LFB,Mercedes Benz,Atego 1327,Pumping Appliance,N3,2017,12
+DPL167,ACTIVE,LFB,Mercedes Benz,Atego 1327,Pumping Appliance,N3,2017,12
+DPL168,ACTIVE,LFB,Mercedes Benz,Atego 1327,Pumping Appliance,N3,2017,12
+DPL169,ACTIVE,LFB,Mercedes Benz,Atego 1327,Pumping Appliance,N3,2017,12
+DPL170,ACTIVE,LFB,Mercedes Benz,Atego 1327,Pumping Appliance,N3,2017,12
+DPL171,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL172,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL173,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL174,ACTIVE,LFB,Mercedes Benz,Atego ,Pumping Appliance,N3,2017,12
+DPL175,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL176,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL177,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL178,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL179,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL180,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL181,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL182,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL183,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL184,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL185,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL186,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL187,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL188,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL189,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL190,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3 ,2017,12
+DPL191,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL192,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL193,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL194,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL195,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL196,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL197,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL198,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL199,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL200,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL201,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL202,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2017,12
+DPL203,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL204,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL205,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL206,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL207,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL208,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL209,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL210,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL211,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL212,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL213,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL214,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL215,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL216,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL217,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL218,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL219,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL220,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL221,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL222,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL223,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL224,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL225,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL226,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL227,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL228,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL229,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL230,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL231,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL232,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL233,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL234,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL235,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL237,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL238,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL239,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL240,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL241,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL242,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL243,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL244,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL245,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL246,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL247,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL248,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL249,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+DPL250,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL251,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL252,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL253,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL254,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL255,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL256,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL257,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL258,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL259,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL260,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL261,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL262,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL263,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL264,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL265,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL266,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL267,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL268,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL269,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL270,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL271,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL272,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL273,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL274,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL275,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL276,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL277,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL278,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL279,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL280,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL281,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL282,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL283,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL284,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL285,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL286,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL287,ACTIVE,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2019,12
+DPL333,TRAINING,LFB,Mercedes Benz,Atego,Pumping Appliance,N3,2018,12
+FID2,ACTIVE,LFB,Vauxhall,Vivaro,Fire Investigation Dog Van,N1,2010,7
+FID3,ACTIVE,LFB,Ford,Transit Custom 310 Trend L2 M ,Fire Investigation Dog Van,N1,2018,7
+FireDart,ACTIVE,LFB,Alnmaritec,Landing Craft,FireBoat,Vessel,2001,20
+Fireflash,RESERVE,LFB,Alnmaritec,Landing Craft,FireBoat,Vessel,2001,20
+FIV7,ACTIVE,LFB,Ford,Transit Custom 310 Trend L2 ,Fire Investigation Unit,N1,2018,7
+FIV8,ACTIVE,LFB,Ford,Transit Custom 310 Trend L2 M ,Fire Investigation Unit,N1,2018,7
+FIV9,ACTIVE,LFB,Ford,Transit Custom 310 Trend L2 M ,Fire Investigation Unit,N1,2018,7
+FIV10,ACTIVE,LFB,Ford,Transit Custom 310 Trend L2 M ,Fire Investigation Unit,N1,2018,7
+FIV11,ACTIVE,LFB,Ford,Transit Custom 310 Trend L2 M ,Fire Investigation Unit,N1,2018,7
+FLT01,ACTIVE,LFB,Moffett,Mounty,Fork Lift Truck,Plant,2009,7
+FLT02,ACTIVE,LFB,Moffett,Mounty,Fork Lift Truck,Plant,2009,12
+FLT03,ACTIVE,LFB,Moffett,Mounty,Fork Lift Truck,Plant,2010,12
+FLT04,ACTIVE,LFB,Moffett,Mounty,Fork Lift Truck,Plant,2010,12
+FRU10,RESERVE,LFB,Mercedes,Atego 1325F,Fire Rescue Unit,N2,2004,12
+FRU11,RESERVE,LFB,Mercedes,Atego 1325F,Fire Rescue Unit,N2,2004,12
+FRU12,RESERVE,LFB,Mercedes,Atego 1325F,Fire Rescue Unit,N2,2004,12
+FRU13,ACTIVE,LFB,Mercedes,Atego 1325F,Fire Rescue Unit,N2,2004,12
+FRU14,ACTIVE,LFB,Mercedes,Atego 1325F,Fire Rescue Unit,N2,2005,12
+FRU15,ACTIVE,LFB,Mercedes,Atego 1325F,Fire Rescue Unit,N2,2005,12
+FRU16,ACTIVE,LFB,Mercedes,Atego 1325F,Fire Rescue Unit,N2,2005,12
+FRU17,ACTIVE,LFB,Mercedes,Atego 1325F,Fire Rescue Unit,N2,2005,12
+FRU18,ACTIVE,LFB,Mercedes,Atego 1325F,Fire Rescue Unit,N2,2005,12
+FRU19,ACTIVE,LFB,Mercedes,Atego 1325F,Fire Rescue Unit,N2,2005,12
+FRU20,ACTIVE,LFB,Mercedes,Atego 1325F,Fire Rescue Unit,N2,2007,12
+FRU21,ACTIVE,LFB,Mercedes,Atego 1325F,Fire Rescue Unit,N2,2007,12
+FRU22,ACTIVE,LFB,Mercedes,Atego 1325F,Fire Rescue Unit,N2,2007,12
+FRU23,ACTIVE,LFB,Mercedes,Atego 1325F,Fire Rescue Unit,N2,2007,12
+FRU24,ACTIVE,LFB,Mercedes,Atego 1325F,Fire Rescue Unit,N2,2007,12
+FRU25,ACTIVE,LFB,Mercedes,Atego 1325F,Fire Rescue Unit,N2,2007,12
+FRU26,ACTIVE,LFB,Mercedes,Atego 1325F,Fire Rescue Unit,N2,2007,12
+FRU9,TRAINING,LFB,Mercedes,Atego 1325F,Fire Rescue Unit,N2,2004,12
+GPV13-T,ACTIVE,LFB,Citroen,Relay + Tail-lift Diesel,GP Van,N1,2006,7
+GPV22-H,ACTIVE,LFB,Mercedes,Sprinter 416,Hydrogen Dual Fuel GP Van,N2,2018,7
+GPV23-H,ACTIVE,LFB,Mercedes,Sprinter 416,Hydrogen Dual Fuel GP Van,N2,2018,7
+HDU1,ACTIVE,LFB,Mercedes,Actros Rigid 2541L,Heavy Distribution Unit,N3,2010,12
+HLU1,ACTIVE,LFB,Mercedes Benz,Atego,Hose Layer,N3,2010,12
+HLU2,ACTIVE,LFB,Mercedes Benz,Atego,Hose Layer,N3,2010,12
+HLU3,ACTIVE,LFB,Mercedes Benz,Atego,Hose Layer,N3,2010,12
+HLU4,ACTIVE,LFB,Mercedes Benz,Atego,Hose Layer,N3,2010,12
+HLU5,RESERVE,LFB,Mercedes Benz,Atego,Hose Layer,N3,2011,12
+HP22,RESERVE,LFB,Volvo,FL6 18,Hydraulic Platform,N3,1997,15
+HP23,RESERVE,LFB,Volvo,FL6 18,Hydraulic Platform,N3,1997,15
+HP24,RESERVE,LFB,Volvo,FL6 18,Hydraulic Platform,N3,1998,15
+HP25,RESERVE,LFB,Volvo,FL6 18,Hydraulic Platform,N3,1998,15
+LRL1,ACTIVE,LFB,Mercedes,Atego 1218 HSL,London Resilience Lorry,N2,2004,12
+LRL2,ACTIVE,LFB,Mercedes,Atego 1218 HSL,London Resilience Lorry,N2,2004,12
+LRL3,ACTIVE,LFB,Mercedes,Atego 1218 HSL,London Resilience Lorry,N2,2004,12
+LRL7,SUPPORT,LFB,Mercedes,Atego 1218 HSL,London Resilience Lorry,N2,2004,12
+LRL8,TRAINING,LFB,Mercedes,Atego 1218 HSL,London Resilience Lorry,N2,2004,12
+MPC11,ACTIVE,LFB,Ford,Transit 02 Tourneo,Medium People Carrier (9 Seat),M2,2003,7
+MPC12,ACTIVE,LFB,Ford,Transit 02 Tourneo,Medium People Carrier (9 Seat),M2,2003,7
+MPC13,ACTIVE,LFB,Renault,Master MM35,Medium People Carrier (9 Seat),M2,2009,7
+MPC14,ACTIVE,LFB,Renault,Master MM35,Medium People Carrier (9 Seat),M2,2009,7
+MPC16,ACTIVE,LFB,Renault,Master MM35,Medium People Carrier (9 Seat),M2,2009,7
+MPC20,ACTIVE,LFB,Renault,Master MM35,Medium People Carrier (9 Seat),M2,2009,7
+MPC22,ACTIVE,LFB,Renault,Master MM35,Medium People Carrier (9 Seat),M2,2009,7
+MRS01,ACTIVE,LFB,Volkswagon,Transporter T30,Medium Rescue Support,N1,2007,7
+MV01T,ACTIVE,LFB,Citroen,Relay 35 L3H3 Blue HDI,Panel Van,N1,2017,7
+MV02T,TRAINING,LFB,Citroen,Relay 35 L3H3 Blue HDI,Panel Van,N1,2017,7
+MV03T,TRAINING,LFB,Citroen,Relay 35 L3H3 Blue HDI,Panel Van,N1,2017,7
+MV04T,ACTIVE,LFB,Fiat,Ducato 35 MH2 2.3 16V Multijet 11 150 BHP,Panel Van,N1,2018,7
+MV05T,TRAINING,LFB,Citroen,Relay 35 L3H3 Blue HDI,Panel Van,N1,2018,7
+MV06,ACTIVE,LFB,MAN,TGE 3.180 ,Panel Van,N1,2019,7
+MV18,ACTIVE,LFB,MAN,TGE 3.140 ,Panel Van,N1,2019,7
+MV19,ACTIVE,LFB,MAN,TGE 3.140 ,Panel Van,N1,2019,7
+MV20,ACTIVE,LFB,MAN,TGE 3.140 ,Panel Van,N1,2019,7
+MV21,ACTIVE,LFB,MAN,TGE 3.140 ,Panel Van,N1,2019,7
+MV26,ACTIVE,LFB,Mercedes Benz,114 LWB VITO,Panel Van,N1,2019,7
+MV27,ACTIVE,LFB,Mercedes Benz,114 LWB VITO,Panel Van,N1,2019,7
+MV28,ACTIVE,LFB,Mercedes Benz,114 LWB VITO,Panel Van,N1,2019,7
+OSU1,RESERVE,LFB,Mercedes,Atego 1223,Operational Support Unit,N2,2007,12
+OSU2,ACTIVE,LFB,Mercedes,Atego 1223,Operational Support Unit,N2,2007,12
+OSU3,ACTIVE,LFB,Mercedes,Atego 1223,Operational Support Unit,N2,2007,12
+OSU4,ACTIVE,LFB,Mercedes,Atego 1223,Operational Support Unit,N2,2007,12
+OSU5,ACTIVE,LFB,Mercedes,Atego 1223,Operational Support Unit,N2,2007,12
+OSU6,ACTIVE,LFB,Mercedes,Atego 1224,Operational Support Unit,N2,2007,12
+OSU7,ACTIVE,LFB,Mercedes,Atego 1224,Operational Support Unit,N2,2007,12
+SAWD2,ACTIVE,LFB,Nissan,Navara Tekna DCI 2.5,Special Ops 4x4,N1,2015,5
+SSU1,ACTIVE,LFB,Mercedes Benz,Atego,Scientific Support Unit,N2,2005,12
+SSU2,ACTIVE,LFB,Mercedes Benz,Atego,Scientific Support Unit,N2,2005,12
+TL51,ACTIVE,LFB,Daimler,Econic,Turntable Ladder,N3,2007,15
+TL52,ACTIVE,LFB,Daimler,Econic,Turntable Ladder,N3,2007,15
+TL53,ACTIVE,LFB,Daimler,Econic,Turntable Ladder,N3,2007,15
+TL54,ACTIVE,LFB,Mercedes,Econic,Turntable Ladder,N3,2007,15
+UV01,ACTIVE,LFB,Ford,Transit Connect,Panel Van,N1,2017,7
+UVL01-4,ACTIVE,LFB,MAN,TGE 4.180,Panel Van,N2,2019,7
+UVL02-4 ,ACTIVE,LFB,MAN,TGE 4.180,Panel Van,N2,2019,7
+UVL03-4,ACTIVE,LFB,MAN,TGE 4.180,Panel Van,N2,2019,7
+UVM01,ACTIVE,LFB,Mercedes,Vito (Marked Red) 114 Bluetec Tourer Select,Minibus,M1,2019,7
+UVM02,ACTIVE,LFB,Mercedes,Vito (Unmarked Silver) 114 Bluetec Tourer Select,Minibus  (Medium Sized Utility) ,M1,2019,7
+UVM03,ACTIVE,LFB,MAN,TGE 3.180 ,Panel Van,N1,2019,7
+UVM04,ACTIVE,LFB,MAN,TGE 3.180 Panel Van,LCV,N1,2019,7
+UVM05,ACTIVE,LFB,MAN,TGE 3.140 Panel Van,LCV,N1,2019,7
+UVM06,ACTIVE,LFB,MAN,TGE 3.140 Panel Van,LCV,N1,2019,7
+UVM07,ACTIVE,LFB,MAN,TGE 3.180 ,Panel Van,N1,2019,7
+UVM08,ACTIVE,LFB,MAN,TGE 3.181,Panel Van,N1,2019,7
+UVM09,ACTIVE,LFB,MAN,TGE 3.180 ,Panel Van,N1,2019,7
+V320,ACTIVE,LFB,Ford,Transit Connect 200,Panel Van,N1,2004,7
+V332,ACTIVE,LFB,Ford,Transit Connect 200SWB Trend 1.6,Panel Van,N1,2015,5
+V333,ACTIVE,LFB,Ford,Transit Connect 200SWB Trend 1.6,Panel Van,N1,2015,5
+V336,TRAINING,LFB,Ford,Transit Connect Trend,Panel Van,N1,2017,7
+V337,TRAINING,LFB,Ford,Transit Connect Trend,Panel Van,N1,2017,7
+V338,ACTIVE,LFB,Ford,Transit Custom,Panel Van,N1,2016,4
+V339,ACTIVE,LFB,Ford,Transit Custom,Panel Van,N1,2016,4
+V340,ACTIVE,LFB,Ford,Transit Custom,Panel Van,N1,2016,4
+V341,ACTIVE,LFB,Ford,Transit Custom,Panel Van,N1,2016,4
