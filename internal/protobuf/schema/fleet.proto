@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package fleet;
+
+import "google/protobuf/empty.proto";
+
+
+option go_package = "pkg/protobuf/schema/fleet";
+
+// Fleet server
+service FleetService {
+    rpc ListVehicles(google.protobuf.Empty) returns (VehicleList) {}
+}
+
+message Vehicle {
+    string fleet_number = 1;
+    string operational_status = 2;
+    string lfb = 3;
+    string make = 4;
+    string model = 5;
+    string type = 6;
+    string category = 7;
+    int32 registration_year = 8;
+    int32 life = 9;
+}
+
+message VehicleList {
+    repeated Vehicle vehicles = 1;
+}

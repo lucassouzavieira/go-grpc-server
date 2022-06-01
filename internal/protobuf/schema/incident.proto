@@ -10,7 +10,7 @@ option go_package = "pkg/protobuf/schema/incident";
 
 // Incidents server
 service IncidentService {
-    rpc List(google.protobuf.Empty) returns (IncidentList) {}
+    rpc ListIncidents(google.protobuf.Empty) returns (IncidentList) {}
 }
 
 message Incident {

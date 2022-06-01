@@ -23,7 +23,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type IncidentServiceClient interface {
-	List(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*IncidentList, error)
+	ListIncidents(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*IncidentList, error)
 }
 
 type incidentServiceClient struct {
@@ -34,9 +34,9 @@ func NewIncidentServiceClient(cc grpc.ClientConnInterface) IncidentServiceClient
 	return &incidentServiceClient{cc}
 }
 
-func (c *incidentServiceClient) List(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*IncidentList, error) {
+func (c *incidentServiceClient) ListIncidents(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*IncidentList, error) {
 	out := new(IncidentList)
-	err := c.cc.Invoke(ctx, "/incident.IncidentService/List", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/incident.IncidentService/ListIncidents", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func (c *incidentServiceClient) List(ctx context.Context, in *emptypb.Empty, opt
 // All implementations must embed UnimplementedIncidentServiceServer
 // for forward compatibility
 type IncidentServiceServer interface {
-	List(context.Context, *emptypb.Empty) (*IncidentList, error)
+	ListIncidents(context.Context, *emptypb.Empty) (*IncidentList, error)
 	mustEmbedUnimplementedIncidentServiceServer()
 }
 
@@ -55,8 +55,8 @@ type IncidentServiceServer interface {
 type UnimplementedIncidentServiceServer struct {
 }
 
-func (UnimplementedIncidentServiceServer) List(context.Context, *emptypb.Empty) (*IncidentList, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
+func (UnimplementedIncidentServiceServer) ListIncidents(context.Context, *emptypb.Empty) (*IncidentList, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListIncidents not implemented")
 }
 func (UnimplementedIncidentServiceServer) mustEmbedUnimplementedIncidentServiceServer() {}
 
@@ -71,20 +71,20 @@ func RegisterIncidentServiceServer(s grpc.ServiceRegistrar, srv IncidentServiceS
 	s.RegisterService(&IncidentService_ServiceDesc, srv)
 }
 
-func _IncidentService_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _IncidentService_ListIncidents_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(emptypb.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(IncidentServiceServer).List(ctx, in)
+		return srv.(IncidentServiceServer).ListIncidents(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/incident.IncidentService/List",
+		FullMethod: "/incident.IncidentService/ListIncidents",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(IncidentServiceServer).List(ctx, req.(*emptypb.Empty))
+		return srv.(IncidentServiceServer).ListIncidents(ctx, req.(*emptypb.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -97,8 +97,8 @@ var IncidentService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*IncidentServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "List",
-			Handler:    _IncidentService_List_Handler,
+			MethodName: "ListIncidents",
+			Handler:    _IncidentService_ListIncidents_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
