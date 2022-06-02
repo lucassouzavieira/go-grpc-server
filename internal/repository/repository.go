@@ -46,3 +46,22 @@ func (r *Repository) GetData() ([][]string, error) {
 
 	return data, err
 }
+
+func (r *Repository) Count() (int, error) {
+	logger := log.New(os.Stderr, "repository: ", 2)
+	f, err := os.Open(r.filepath)
+	if err != nil {
+		logger.Fatalln(err)
+	}
+
+	defer f.Close()
+
+	csvReader := csv.NewReader(f)
+	data, err := csvReader.ReadAll()
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	return len(data), err
+}
