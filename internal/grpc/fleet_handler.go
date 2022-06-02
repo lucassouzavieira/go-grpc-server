@@ -5,6 +5,7 @@ package grpc
 import (
 	"log"
 	"os"
+	"strconv"
 
 	repository "github.com/lucassouzavieira/go-grpc-server/internal/repository"
 	pbfleet "github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/schema/fleet"
@@ -45,6 +46,19 @@ func (h *FleetHandler) GetVehicles() ([]pbfleet.Vehicle, error) {
 
 // package internal functions
 func vehicleFromCsv(s []string) pbfleet.Vehicle {
+	logger := log.New(os.Stderr, "App info: ", 2)
+	registrationYear, err := strconv.Atoi(s[7])
+
+	if err != nil {
+		logger.Fatal(err)
+	}
+
+	life, err := strconv.Atoi(s[8])
+
+	if err != nil {
+		logger.Fatal(err)
+	}
+
 	return pbfleet.Vehicle{
 		FleetNumber:       s[0],
 		OperationalStatus: s[1],
@@ -53,7 +67,7 @@ func vehicleFromCsv(s []string) pbfleet.Vehicle {
 		Model:             s[4],
 		Type:              s[5],
 		Category:          s[6],
-		RegistrationYear:  0,
-		Life:              0,
+		RegistrationYear:  int32(registrationYear),
+		Life:              int32(life),
 	}
 }

@@ -5,21 +5,28 @@ import (
 	"log"
 	"os"
 
-	repository "github.com/lucassouzavieira/go-grpc-server/internal/repository"
+	grpc "github.com/lucassouzavieira/go-grpc-server/internal/grpc"
+	"github.com/lucassouzavieira/go-grpc-server/internal/repository"
 )
 
 var (
-	mockup = "../test/data/mockup.csv"
+	fleet = "../data/lfb_fleet_list_oct_2019.csv"
 )
 
 func main() {
 	logger := log.New(os.Stderr, "App info: ", 2)
-	repo := repository.NewRepository(mockup)
-	data, err := repo.GetData()
+	handler, err := grpc.NewFleetHandler(repository.NewRepository(fleet))
 
 	if err != nil {
 		logger.Fatal(err)
 	}
 
-	fmt.Print(data)
+	vehicles, err := handler.GetVehicles()
+
+	if err != nil {
+		logger.Fatal(err)
+	}
+
+
+	fmt.Print(vehicles[0].FleetNumber, vehicles[0].Lfb)
 }
