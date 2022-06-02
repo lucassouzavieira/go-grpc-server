@@ -2,8 +2,8 @@ package grpc
 
 import ( 
 	"flag" 
-	pbf "github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/schema/fleet"
-	pbi "github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/schema/incident"
+	pbfleet "github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/schema/fleet"
+	pbincident "github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/schema/incident"
 )
 
 
@@ -12,11 +12,11 @@ var (
 )
 
 type fleetServer struct {
-	pbf.UnimplementedFleetServiceServer
+	pbfleet.UnimplementedFleetServiceServer
 }
 
 type incidentServer struct {
-	pbi.UnimplementedIncidentServiceServer
+	pbincident.UnimplementedIncidentServiceServer
 }
 
 type grpcAppServer struct {
