@@ -42,6 +42,7 @@ lint:
 fmt:
 	$(LINTER_PATH) run ./...
 
+.PHONY: test
 test:
 	$(GO) test -timeout 3m ./...
 
