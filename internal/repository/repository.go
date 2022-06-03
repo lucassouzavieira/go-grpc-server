@@ -47,6 +47,27 @@ func (r *Repository) GetData() ([][]string, error) {
 	return data, err
 }
 
+func (r *Repository) AddData(l []string) error {
+	logger := log.New(os.Stderr, "repository: ", 2)
+	f, err := os.Open(r.filepath)
+
+	if err != nil {
+		logger.Fatalln(err)
+	}
+
+	defer f.Close()
+
+	csvWriter := csv.NewWriter(f)
+	err = csvWriter.Write(l)
+
+	if err != nil {
+		logger.Fatalln(err)
+	}
+
+	csvWriter.Flush()
+	return nil
+}
+
 func (r *Repository) Count() (int, error) {
 	logger := log.New(os.Stderr, "repository: ", 2)
 	f, err := os.Open(r.filepath)

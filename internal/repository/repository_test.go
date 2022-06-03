@@ -1,19 +1,16 @@
 package repository
 
 import (
-	"bytes"
 	"fmt"
 	"testing"
 )
 
 var (
 	mockup = "../../test/data/mockup.csv"
+	mockup_write = "../../test/data/mockup_write.csv"
 )
 
 func TestReadFile(t *testing.T) {
-	var buffer bytes.Buffer
-	buffer.WriteString("any,csv,data")
-
 	repository := NewRepository(mockup)
 
 	content, err := repository.GetData()
@@ -24,10 +21,18 @@ func TestReadFile(t *testing.T) {
 	fmt.Print(content)
 }
 
-func TestCount(t *testing.T) {
-	var buffer bytes.Buffer
-	buffer.WriteString("any,csv,data")
+func TestWriteFile(t *testing.T) {
+	repository := NewRepository(mockup_write)
 
+	line := []string{"yet", "another", "line"}
+	err := repository.AddData(line)
+
+	if err != nil {
+		t.Error("Failed to read csv")
+	}
+}
+
+func TestCount(t *testing.T) {
 	repository := NewRepository(mockup)
 
 	count, err := repository.Count()
