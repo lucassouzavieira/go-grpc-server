@@ -1,7 +1,6 @@
 package grpc
 
 // Loads data from a csv entry and transform to a proto model struct
-
 import (
 	"log"
 	"os"
@@ -13,7 +12,7 @@ import (
 
 type FleetHandler struct {
 	r *repository.Repository
-	v []pbfleet.Vehicle
+	v []*pbfleet.Vehicle
 }
 
 func NewFleetHandler(r *repository.Repository) (*FleetHandler, error) {
@@ -24,14 +23,14 @@ func NewFleetHandler(r *repository.Repository) (*FleetHandler, error) {
 		logger.Fatal(err)
 	}
 
-	var vehicles []pbfleet.Vehicle
+	var vehicles []*pbfleet.Vehicle
 	for i, v := range data {
 		if i == 0 {
 			continue // skip headers
 		}
 
 		vehicle := vehicleFromCsv(v)
-		vehicles = append(vehicles, vehicle)
+		vehicles = append(vehicles, &vehicle)
 	}
 
 	return &FleetHandler{
@@ -40,7 +39,7 @@ func NewFleetHandler(r *repository.Repository) (*FleetHandler, error) {
 	}, nil
 }
 
-func (h *FleetHandler) GetVehicles() ([]pbfleet.Vehicle, error) {
+func (h *FleetHandler) GetVehicles() ([]*pbfleet.Vehicle, error) {
 	return h.v, nil
 }
 

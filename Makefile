@@ -11,6 +11,7 @@ WORK_DIR=/go/src/$(PROJECT_PACKAGE)
 BUILD_DIRECTORY=build
 LINTER_EXECUTABLE := golangci-lint
 LINTER_PATH := $(GOPATH)/bin/$(LINTER_EXECUTABLE)
+GOFMT := gofmt
 BUILD_ENV :=
 BUILD_ENV += CGO_ENABLED=0
 
@@ -40,7 +41,7 @@ lint:
 
 .PHONY: fmt
 fmt:
-	$(LINTER_PATH) run ./...
+	$(GOFMT) -s -w .
 
 .PHONY: test
 test:

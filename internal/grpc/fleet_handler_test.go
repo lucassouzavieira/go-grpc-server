@@ -2,7 +2,6 @@ package grpc
 
 import (
 	"bytes"
-	"fmt"
 	"testing"
 
 	r "github.com/lucassouzavieira/go-grpc-server/internal/repository"
@@ -33,9 +32,6 @@ func TestGetVehicles(t *testing.T) {
 	var expected int32 = 3
 
 	if len(vehicles) != 3 {
-		t.Error(fmt.Sprintf("Expected %d lines, found %d", expected, len(vehicles)))
+		t.Errorf("Expected %d lines, found %d", expected, len(vehicles))
 	}
 }
-
-
-

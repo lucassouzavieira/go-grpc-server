@@ -38,9 +38,6 @@ func TestCount(t *testing.T) {
 	var expected int32 = 3
 
 	if count != 3 {
-		t.Error(fmt.Sprintf("Expected %d lines, found %d", expected, count))
+		t.Errorf("Expected %d lines, found %d", expected, count)
 	}
 }
-
-
-
