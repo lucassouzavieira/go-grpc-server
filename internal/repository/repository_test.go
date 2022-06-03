@@ -6,7 +6,7 @@ import (
 )
 
 var (
-	mockup = "../../test/data/mockup.csv"
+	mockup       = "../../test/data/mockup.csv"
 	mockup_write = "../../test/data/mockup_write.csv"
 )
 
