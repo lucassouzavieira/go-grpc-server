@@ -25,6 +25,9 @@ const _ = grpc.SupportPackageIsVersion7
 type FleetServiceClient interface {
 	ListVehicles(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*VehicleList, error)
 	AddVehicle(ctx context.Context, in *VehicleRequest, opts ...grpc.CallOption) (*VehicleResponse, error)
+	GetTrainingVehicles(ctx context.Context, in *VehicleRequest, opts ...grpc.CallOption) (*VehicleResponse, error)
+	GetReserveVehicles(ctx context.Context, in *VehicleRequest, opts ...grpc.CallOption) (*VehicleResponse, error)
+	GetActiveVehicles(ctx context.Context, in *VehicleRequest, opts ...grpc.CallOption) (*VehicleResponse, error)
 }
 
 type fleetServiceClient struct {
@@ -53,12 +56,42 @@ func (c *fleetServiceClient) AddVehicle(ctx context.Context, in *VehicleRequest,
 	return out, nil
 }
 
+func (c *fleetServiceClient) GetTrainingVehicles(ctx context.Context, in *VehicleRequest, opts ...grpc.CallOption) (*VehicleResponse, error) {
+	out := new(VehicleResponse)
+	err := c.cc.Invoke(ctx, "/fleet.FleetService/GetTrainingVehicles", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *fleetServiceClient) GetReserveVehicles(ctx context.Context, in *VehicleRequest, opts ...grpc.CallOption) (*VehicleResponse, error) {
+	out := new(VehicleResponse)
+	err := c.cc.Invoke(ctx, "/fleet.FleetService/GetReserveVehicles", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *fleetServiceClient) GetActiveVehicles(ctx context.Context, in *VehicleRequest, opts ...grpc.CallOption) (*VehicleResponse, error) {
+	out := new(VehicleResponse)
+	err := c.cc.Invoke(ctx, "/fleet.FleetService/GetActiveVehicles", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // FleetServiceServer is the server API for FleetService service.
 // All implementations must embed UnimplementedFleetServiceServer
 // for forward compatibility
 type FleetServiceServer interface {
 	ListVehicles(context.Context, *emptypb.Empty) (*VehicleList, error)
 	AddVehicle(context.Context, *VehicleRequest) (*VehicleResponse, error)
+	GetTrainingVehicles(context.Context, *VehicleRequest) (*VehicleResponse, error)
+	GetReserveVehicles(context.Context, *VehicleRequest) (*VehicleResponse, error)
+	GetActiveVehicles(context.Context, *VehicleRequest) (*VehicleResponse, error)
 	mustEmbedUnimplementedFleetServiceServer()
 }
 
@@ -71,6 +104,15 @@ func (UnimplementedFleetServiceServer) ListVehicles(context.Context, *emptypb.Em
 }
 func (UnimplementedFleetServiceServer) AddVehicle(context.Context, *VehicleRequest) (*VehicleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddVehicle not implemented")
+}
+func (UnimplementedFleetServiceServer) GetTrainingVehicles(context.Context, *VehicleRequest) (*VehicleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTrainingVehicles not implemented")
+}
+func (UnimplementedFleetServiceServer) GetReserveVehicles(context.Context, *VehicleRequest) (*VehicleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetReserveVehicles not implemented")
+}
+func (UnimplementedFleetServiceServer) GetActiveVehicles(context.Context, *VehicleRequest) (*VehicleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetActiveVehicles not implemented")
 }
 func (UnimplementedFleetServiceServer) mustEmbedUnimplementedFleetServiceServer() {}
 
@@ -121,6 +163,60 @@ func _FleetService_AddVehicle_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _FleetService_GetTrainingVehicles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(VehicleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FleetServiceServer).GetTrainingVehicles(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/fleet.FleetService/GetTrainingVehicles",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FleetServiceServer).GetTrainingVehicles(ctx, req.(*VehicleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FleetService_GetReserveVehicles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(VehicleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FleetServiceServer).GetReserveVehicles(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/fleet.FleetService/GetReserveVehicles",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FleetServiceServer).GetReserveVehicles(ctx, req.(*VehicleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FleetService_GetActiveVehicles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(VehicleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FleetServiceServer).GetActiveVehicles(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/fleet.FleetService/GetActiveVehicles",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FleetServiceServer).GetActiveVehicles(ctx, req.(*VehicleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // FleetService_ServiceDesc is the grpc.ServiceDesc for FleetService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -135,6 +231,18 @@ var FleetService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AddVehicle",
 			Handler:    _FleetService_AddVehicle_Handler,
+		},
+		{
+			MethodName: "GetTrainingVehicles",
+			Handler:    _FleetService_GetTrainingVehicles_Handler,
+		},
+		{
+			MethodName: "GetReserveVehicles",
+			Handler:    _FleetService_GetReserveVehicles_Handler,
+		},
+		{
+			MethodName: "GetActiveVehicles",
+			Handler:    _FleetService_GetActiveVehicles_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

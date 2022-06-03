@@ -11,6 +11,9 @@ option go_package = "pkg/protobuf/schema/fleet";
 service FleetService {
     rpc ListVehicles(google.protobuf.Empty) returns (VehicleList) {}
     rpc AddVehicle(VehicleRequest) returns (VehicleResponse) {}
+    rpc GetTrainingVehicles(VehicleRequest) returns (VehicleResponse) {}
+    rpc GetReserveVehicles(VehicleRequest) returns (VehicleResponse) {}
+    rpc GetActiveVehicles(VehicleRequest) returns (VehicleResponse) {}
 }
 
 message Vehicle {
