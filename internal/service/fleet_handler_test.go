@@ -1,8 +1,10 @@
 package service
 
 import (
-	"bytes"
+	"fmt"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 
 	r "github.com/lucassouzavieira/go-grpc-server/internal/repository"
 )
@@ -12,11 +14,7 @@ var (
 )
 
 func TestGetVehicles(t *testing.T) {
-	var buffer bytes.Buffer
-	buffer.WriteString("any,csv,data")
-
 	repository := r.NewRepository(mockup)
-
 	handler, err := NewFleetHandler(repository)
 
 	if err != nil {
@@ -29,9 +27,28 @@ func TestGetVehicles(t *testing.T) {
 		t.Error("Failed to load data")
 	}
 
-	var expected int32 = 3
+	assert.Equal(t, 3, len(vehicles))
+}
 
-	if len(vehicles) != 3 {
-		t.Errorf("Expected %d lines, found %d", expected, len(vehicles))
+func TestGetVehiclesByOperationalStatus(t *testing.T) {
+	repository := r.NewRepository(mockup)
+	handler, err := NewFleetHandler(repository)
+
+	if err != nil {
+		t.Error("Failed to create FleetHandler")
 	}
+
+	active, err := handler.GetVehiclesByOperationalStatus("ACTIVE")
+	if err != nil {
+		t.Error("Failed to load data")
+	}
+
+	assert.Equal(t, 1, len(active), fmt.Sprintf("%+v", active))
+
+	reserve, err := handler.GetVehiclesByOperationalStatus("RESERVE")
+	if err != nil {
+		t.Error("Failed to load data")
+	}
+
+	assert.Equal(t, 1, len(reserve), fmt.Sprintf("%+v", reserve))
 }

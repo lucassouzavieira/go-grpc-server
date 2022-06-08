@@ -41,6 +41,18 @@ func (h *FleetHandler) GetVehicles() ([]*fleet.Vehicle, error) {
 	return h.v, nil
 }
 
+func (h *FleetHandler) GetVehiclesByOperationalStatus(status string) ([]*fleet.Vehicle, error) {
+	var filtered []*fleet.Vehicle = make([]*fleet.Vehicle, 0)
+
+	for _, v := range h.v {
+		if v.OperationalStatus == status {
+			filtered = append(filtered, v)
+		}
+	}
+
+	return filtered, nil
+}
+
 // package internal functions
 func vehicleFromCsv(s []string) fleet.Vehicle {
 	registrationYear, err := strconv.Atoi(s[7])
