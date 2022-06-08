@@ -1,4 +1,4 @@
-package grpc
+package service
 
 // Loads data from a csv entry and transform to a proto model struct
 import (
