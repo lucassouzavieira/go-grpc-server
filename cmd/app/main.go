@@ -4,11 +4,11 @@ import (
 	"net"
 	"os"
 
-	log "github.com/sirupsen/logrus"
-
-	igrpc "github.com/lucassouzavieira/go-grpc-server/internal/grpc"
+	"github.com/lucassouzavieira/go-grpc-server/internal/service"
 	pbf "github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/schema/fleet"
+	log "github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 )
 
 var (
@@ -21,7 +21,7 @@ func main() {
 	log.SetOutput(os.Stdout)
 	log.SetLevel(log.DebugLevel)
 
-	s1 := igrpc.FleetServer{}
+	s1 := service.FleetServer{}
 
 	// Configure the server
 	listener, err := net.Listen("tcp", ":8086")
@@ -32,6 +32,8 @@ func main() {
 
 	server := grpc.NewServer()
 	pbf.RegisterFleetServiceServer(server, &s1)
+
+	reflection.Register(server)
 
 	if err := server.Serve(listener); err != nil {
 		log.Fatal(err)
