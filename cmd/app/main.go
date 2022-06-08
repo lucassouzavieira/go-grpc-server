@@ -4,6 +4,7 @@ import (
 	"net"
 	"os"
 
+	"github.com/lucassouzavieira/go-grpc-server/internal/repository"
 	"github.com/lucassouzavieira/go-grpc-server/internal/service"
 	"github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/fleet"
 	log "github.com/sirupsen/logrus"
@@ -12,7 +13,7 @@ import (
 )
 
 var (
-// fleet = "../data/lfb_fleet_list_oct_2019.csv"
+	fleet_csv = "../data/lfb_fleet_list_oct_2019.csv"
 )
 
 func main() {
@@ -21,7 +22,11 @@ func main() {
 	log.SetOutput(os.Stdout)
 	log.SetLevel(log.DebugLevel)
 
-	s1 := service.FleetServer{}
+	repo := repository.NewRepository(fleet_csv)
+	s1 := service.FleetServer{
+		Repository:                      repo,
+		UnimplementedFleetServiceServer: fleet.UnimplementedFleetServiceServer{},
+	}
 
 	// Configure the server
 	listener, err := net.Listen("tcp", ":8086")

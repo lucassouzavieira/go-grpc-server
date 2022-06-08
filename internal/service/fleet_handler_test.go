@@ -85,7 +85,7 @@ func TestGetVehiclesByOperationalStatus(t *testing.T) {
 		t.Error("Failed to create FleetHandler")
 	}
 
-	active, err := handler.GetVehiclesByOperationalStatus("ACTIVE")
+	active, err := handler.GetVehiclesByOperationalStatus("TRAINING")
 	if err != nil {
 		t.Error("Failed to load data")
 	}

@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"strings"
 
 	"github.com/lucassouzavieira/go-grpc-server/internal/repository"
 	"github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/fleet"
@@ -10,16 +11,13 @@ import (
 	"k8s.io/apimachinery/pkg/util/rand"
 )
 
-var (
-	fleetData = "../data/lfb_fleet_list_oct_2019.csv"
-)
-
 type FleetServer struct {
 	fleet.UnimplementedFleetServiceServer
+	Repository *repository.Repository
 }
 
 func (s *FleetServer) ListVehicles(ctx context.Context, in *emptypb.Empty) (*fleet.VehicleList, error) {
-	repo := repository.NewRepository(fleetData)
+	repo := s.Repository
 	fleetHandler, err := NewFleetHandler(repo)
 
 	if err != nil {
@@ -38,7 +36,7 @@ func (s *FleetServer) ListVehicles(ctx context.Context, in *emptypb.Empty) (*fle
 }
 
 func (s *FleetServer) GetVehiclesByOpStatus(ctx context.Context, req *fleet.GetVehiclesByOpStatusRequest) (*fleet.VehicleList, error) {
-	repo := repository.NewRepository(fleetData)
+	repo := s.Repository
 	fleetHandler, err := NewFleetHandler(repo)
 
 	if err != nil {
@@ -57,7 +55,7 @@ func (s *FleetServer) GetVehiclesByOpStatus(ctx context.Context, req *fleet.GetV
 }
 
 func (s *FleetServer) AddVehicle(ctx context.Context, req *fleet.VehicleRequest) (*fleet.VehicleResponse, error) {
-	repo := repository.NewRepository(fleetData)
+	repo := s.Repository
 	fleetHandler, err := NewFleetHandler(repo)
 
 	if err != nil {
@@ -66,7 +64,7 @@ func (s *FleetServer) AddVehicle(ctx context.Context, req *fleet.VehicleRequest)
 	}
 
 	vehicle := &fleet.Vehicle{
-		FleetNumber:       rand.String(5),
+		FleetNumber:       strings.ToUpper(rand.String(5)),
 		OperationalStatus: req.GetOperationalStatus(),
 		Lfb:               req.GetLfb(),
 		Make:              req.GetMake(),
@@ -77,7 +75,6 @@ func (s *FleetServer) AddVehicle(ctx context.Context, req *fleet.VehicleRequest)
 		Life:              req.GetLife(),
 	}
 
-	// TODO Add data
 	res, err := fleetHandler.SaveVehicle(vehicle)
 
 	if err != nil {
@@ -91,6 +88,10 @@ func (s *FleetServer) AddVehicle(ctx context.Context, req *fleet.VehicleRequest)
 	}, nil
 }
 
-func NewFleetServer() (*FleetServer, error) {
-	return &FleetServer{}, nil
+func NewFleetServer(f string) (*FleetServer, error) {
+	r := repository.NewRepository(f)
+
+	return &FleetServer{
+		Repository: r,
+	}, nil
 }
