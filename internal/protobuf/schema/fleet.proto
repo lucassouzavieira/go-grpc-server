@@ -11,9 +11,7 @@ option go_package = "pkg/protobuf/fleet";
 service FleetService {
     rpc ListVehicles(google.protobuf.Empty) returns (VehicleList) {}
     rpc AddVehicle(VehicleRequest) returns (VehicleResponse) {}
-    rpc GetTrainingVehicles(google.protobuf.Empty) returns (VehicleList) {}
-    rpc GetReserveVehicles(google.protobuf.Empty) returns (VehicleList) {}
-    rpc GetActiveVehicles(google.protobuf.Empty) returns (VehicleList) {}
+    rpc GetVehiclesByOpStatus(GetVehiclesByOpStatusRequest) returns (VehicleList) {}
 }
 
 message Vehicle {
@@ -37,6 +35,10 @@ message VehicleRequest {
     string category = 7;
     int32 registration_year = 8;
     int32 life = 9;
+}
+
+message GetVehiclesByOpStatusRequest {
+    string status = 1;
 }
 
 message VehicleResponse {

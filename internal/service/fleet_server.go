@@ -36,7 +36,7 @@ func (s *FleetServer) ListVehicles(ctx context.Context, in *emptypb.Empty) (*fle
 	}, nil
 }
 
-func (s *FleetServer) GetTrainingVehicles(ctx context.Context, in *emptypb.Empty) (*fleet.VehicleList, error) {
+func (s *FleetServer) GetVehiclesByOpStatus(ctx context.Context, req *fleet.GetVehiclesByOpStatusRequest) (*fleet.VehicleList, error) {
 	repo := repository.NewRepository(fleetData)
 	fleetHandler, err := NewFleetHandler(repo)
 
@@ -44,7 +44,7 @@ func (s *FleetServer) GetTrainingVehicles(ctx context.Context, in *emptypb.Empty
 		log.Fatal(err)
 	}
 
-	vehicles, err := fleetHandler.GetVehiclesByOperationalStatus("TRAINING")
+	vehicles, err := fleetHandler.GetVehiclesByOperationalStatus(req.GetStatus())
 
 	if err != nil {
 		log.Fatal(err)
