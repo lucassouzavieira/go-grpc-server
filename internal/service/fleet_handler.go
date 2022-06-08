@@ -6,12 +6,12 @@ import (
 	"strconv"
 
 	repository "github.com/lucassouzavieira/go-grpc-server/internal/repository"
-	pbfleet "github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/schema/fleet"
+	"github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/fleet"
 )
 
 type FleetHandler struct {
 	r *repository.Repository
-	v []*pbfleet.Vehicle
+	v []*fleet.Vehicle
 }
 
 func NewFleetHandler(r *repository.Repository) (*FleetHandler, error) {
@@ -21,7 +21,7 @@ func NewFleetHandler(r *repository.Repository) (*FleetHandler, error) {
 		log.Fatal(err)
 	}
 
-	var vehicles []*pbfleet.Vehicle
+	var vehicles []*fleet.Vehicle
 	for i, v := range data {
 		if i == 0 {
 			continue // skip headers
@@ -37,12 +37,12 @@ func NewFleetHandler(r *repository.Repository) (*FleetHandler, error) {
 	}, nil
 }
 
-func (h *FleetHandler) GetVehicles() ([]*pbfleet.Vehicle, error) {
+func (h *FleetHandler) GetVehicles() ([]*fleet.Vehicle, error) {
 	return h.v, nil
 }
 
 // package internal functions
-func vehicleFromCsv(s []string) pbfleet.Vehicle {
+func vehicleFromCsv(s []string) fleet.Vehicle {
 	registrationYear, err := strconv.Atoi(s[7])
 
 	if err != nil {
@@ -55,7 +55,7 @@ func vehicleFromCsv(s []string) pbfleet.Vehicle {
 		log.Fatal(err)
 	}
 
-	return pbfleet.Vehicle{
+	return fleet.Vehicle{
 		FleetNumber:       s[0],
 		OperationalStatus: s[1],
 		Lfb:               s[2],

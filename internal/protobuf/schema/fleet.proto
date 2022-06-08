@@ -5,7 +5,7 @@ package fleet;
 import "google/protobuf/empty.proto";
 
 
-option go_package = "pkg/protobuf/schema/fleet";
+option go_package = "pkg/protobuf/fleet";
 
 // Fleet server
 service FleetService {

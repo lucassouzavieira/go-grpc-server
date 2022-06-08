@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/lucassouzavieira/go-grpc-server/internal/service"
-	pbf "github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/schema/fleet"
+	"github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/fleet"
 	log "github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
@@ -31,7 +31,7 @@ func main() {
 	}
 
 	server := grpc.NewServer()
-	pbf.RegisterFleetServiceServer(server, &s1)
+	fleet.RegisterFleetServiceServer(server, &s1)
 
 	reflection.Register(server)
 

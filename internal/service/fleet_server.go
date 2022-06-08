@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/lucassouzavieira/go-grpc-server/internal/repository"
-	pbfleet "github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/schema/fleet"
+	pbfleet "github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/fleet"
 	log "github.com/sirupsen/logrus"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
