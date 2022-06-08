@@ -37,7 +37,7 @@ proto:
 
 .PHONY: lint
 lint:
-	$(LINTER_PATH) run ./...
+	$(LINTER_PATH) run --disable  errcheck --disable staticcheck ./...
 
 .PHONY: fmt
 fmt:
