@@ -63,7 +63,7 @@ func TestSaveVehicle(t *testing.T) {
 
 	assert.Equal(t, 3, len(vehicles))
 
-	vxCase, err := v("ACTIVE", "Mercedes", "N3")
+	vxCase, err := v("ACTIVE", "Mercedes", "N3A")
 	if err != nil {
 		t.Error("Failed to create vehicle data")
 	}
