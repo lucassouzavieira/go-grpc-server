@@ -12,6 +12,7 @@ service FleetService {
     rpc ListVehicles(google.protobuf.Empty) returns (VehicleList) {}
     rpc AddVehicle(VehicleRequest) returns (VehicleResponse) {}
     rpc GetVehiclesByOpStatus(GetVehiclesByOpStatusRequest) returns (VehicleList) {}
+    rpc GetVehiclesByYear(GetVehiclesByYearRequest) returns (VehicleList) {}
 }
 
 message Vehicle {
@@ -39,6 +40,10 @@ message VehicleRequest {
 
 message GetVehiclesByOpStatusRequest {
     string status = 1;
+}
+
+message GetVehiclesByYearRequest {
+    int32 year = 1;
 }
 
 message VehicleResponse {

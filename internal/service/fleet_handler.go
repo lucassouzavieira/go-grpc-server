@@ -53,6 +53,18 @@ func (h *FleetHandler) GetVehiclesByOperationalStatus(status string) ([]*fleet.V
 	return filtered, nil
 }
 
+func (h *FleetHandler) GetVehiclesByYear(year int32) ([]*fleet.Vehicle, error) {
+	var filtered []*fleet.Vehicle = make([]*fleet.Vehicle, 0)
+
+	for _, v := range h.v {
+		if v.RegistrationYear == year {
+			filtered = append(filtered, v)
+		}
+	}
+
+	return filtered, nil
+}
+
 func (h *FleetHandler) SaveVehicle(v *fleet.Vehicle) (bool, error) {
 	line, err := toCsv(v)
 

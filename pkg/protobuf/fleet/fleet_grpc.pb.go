@@ -26,6 +26,7 @@ type FleetServiceClient interface {
 	ListVehicles(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*VehicleList, error)
 	AddVehicle(ctx context.Context, in *VehicleRequest, opts ...grpc.CallOption) (*VehicleResponse, error)
 	GetVehiclesByOpStatus(ctx context.Context, in *GetVehiclesByOpStatusRequest, opts ...grpc.CallOption) (*VehicleList, error)
+	GetVehiclesByYear(ctx context.Context, in *GetVehiclesByYearRequest, opts ...grpc.CallOption) (*VehicleList, error)
 }
 
 type fleetServiceClient struct {
@@ -63,6 +64,15 @@ func (c *fleetServiceClient) GetVehiclesByOpStatus(ctx context.Context, in *GetV
 	return out, nil
 }
 
+func (c *fleetServiceClient) GetVehiclesByYear(ctx context.Context, in *GetVehiclesByYearRequest, opts ...grpc.CallOption) (*VehicleList, error) {
+	out := new(VehicleList)
+	err := c.cc.Invoke(ctx, "/fleet.FleetService/GetVehiclesByYear", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // FleetServiceServer is the server API for FleetService service.
 // All implementations must embed UnimplementedFleetServiceServer
 // for forward compatibility
@@ -70,6 +80,7 @@ type FleetServiceServer interface {
 	ListVehicles(context.Context, *emptypb.Empty) (*VehicleList, error)
 	AddVehicle(context.Context, *VehicleRequest) (*VehicleResponse, error)
 	GetVehiclesByOpStatus(context.Context, *GetVehiclesByOpStatusRequest) (*VehicleList, error)
+	GetVehiclesByYear(context.Context, *GetVehiclesByYearRequest) (*VehicleList, error)
 	mustEmbedUnimplementedFleetServiceServer()
 }
 
@@ -85,6 +96,9 @@ func (UnimplementedFleetServiceServer) AddVehicle(context.Context, *VehicleReque
 }
 func (UnimplementedFleetServiceServer) GetVehiclesByOpStatus(context.Context, *GetVehiclesByOpStatusRequest) (*VehicleList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetVehiclesByOpStatus not implemented")
+}
+func (UnimplementedFleetServiceServer) GetVehiclesByYear(context.Context, *GetVehiclesByYearRequest) (*VehicleList, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetVehiclesByYear not implemented")
 }
 func (UnimplementedFleetServiceServer) mustEmbedUnimplementedFleetServiceServer() {}
 
@@ -153,6 +167,24 @@ func _FleetService_GetVehiclesByOpStatus_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _FleetService_GetVehiclesByYear_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetVehiclesByYearRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FleetServiceServer).GetVehiclesByYear(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/fleet.FleetService/GetVehiclesByYear",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FleetServiceServer).GetVehiclesByYear(ctx, req.(*GetVehiclesByYearRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // FleetService_ServiceDesc is the grpc.ServiceDesc for FleetService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -171,6 +203,10 @@ var FleetService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetVehiclesByOpStatus",
 			Handler:    _FleetService_GetVehiclesByOpStatus_Handler,
+		},
+		{
+			MethodName: "GetVehiclesByYear",
+			Handler:    _FleetService_GetVehiclesByYear_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

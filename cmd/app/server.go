@@ -31,11 +31,6 @@ var (
 func serve() {
 	flag.Parse()
 
-	// Add logrus settings
-	log.SetFormatter(&log.JSONFormatter{})
-	log.SetOutput(os.Stdout)
-	log.SetLevel(log.DebugLevel)
-
 	ctx := context.Background()
 	ctx, cancel := context.WithCancel(ctx)
 
@@ -79,8 +74,14 @@ func serve() {
 
 	select {
 	case <-interrupt:
+		log.WithFields(log.Fields{
+			"msg": "Interrupt signal received...",
+		}).WithContext(ctx)
 		break
 	case <-ctx.Done():
+		log.WithFields(log.Fields{
+			"msg": "Context done...",
+		}).WithContext(ctx)
 		break
 	}
 

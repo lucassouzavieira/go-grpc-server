@@ -282,6 +282,53 @@ func (x *GetVehiclesByOpStatusRequest) GetStatus() string {
 	return ""
 }
 
+type GetVehiclesByYearRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Year int32 `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
+}
+
+func (x *GetVehiclesByYearRequest) Reset() {
+	*x = GetVehiclesByYearRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_internal_protobuf_schema_fleet_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetVehiclesByYearRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetVehiclesByYearRequest) ProtoMessage() {}
+
+func (x *GetVehiclesByYearRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_internal_protobuf_schema_fleet_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetVehiclesByYearRequest.ProtoReflect.Descriptor instead.
+func (*GetVehiclesByYearRequest) Descriptor() ([]byte, []int) {
+	return file_internal_protobuf_schema_fleet_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *GetVehiclesByYearRequest) GetYear() int32 {
+	if x != nil {
+		return x.Year
+	}
+	return 0
+}
+
 type VehicleResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -294,7 +341,7 @@ type VehicleResponse struct {
 func (x *VehicleResponse) Reset() {
 	*x = VehicleResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_internal_protobuf_schema_fleet_proto_msgTypes[3]
+		mi := &file_internal_protobuf_schema_fleet_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -307,7 +354,7 @@ func (x *VehicleResponse) String() string {
 func (*VehicleResponse) ProtoMessage() {}
 
 func (x *VehicleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_internal_protobuf_schema_fleet_proto_msgTypes[3]
+	mi := &file_internal_protobuf_schema_fleet_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -320,7 +367,7 @@ func (x *VehicleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VehicleResponse.ProtoReflect.Descriptor instead.
 func (*VehicleResponse) Descriptor() ([]byte, []int) {
-	return file_internal_protobuf_schema_fleet_proto_rawDescGZIP(), []int{3}
+	return file_internal_protobuf_schema_fleet_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *VehicleResponse) GetVehicle() *Vehicle {
@@ -348,7 +395,7 @@ type VehicleList struct {
 func (x *VehicleList) Reset() {
 	*x = VehicleList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_internal_protobuf_schema_fleet_proto_msgTypes[4]
+		mi := &file_internal_protobuf_schema_fleet_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -361,7 +408,7 @@ func (x *VehicleList) String() string {
 func (*VehicleList) ProtoMessage() {}
 
 func (x *VehicleList) ProtoReflect() protoreflect.Message {
-	mi := &file_internal_protobuf_schema_fleet_proto_msgTypes[4]
+	mi := &file_internal_protobuf_schema_fleet_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -374,7 +421,7 @@ func (x *VehicleList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VehicleList.ProtoReflect.Descriptor instead.
 func (*VehicleList) Descriptor() ([]byte, []int) {
-	return file_internal_protobuf_schema_fleet_proto_rawDescGZIP(), []int{4}
+	return file_internal_protobuf_schema_fleet_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *VehicleList) GetVehicles() []*Vehicle {
@@ -426,7 +473,10 @@ var file_internal_protobuf_schema_fleet_proto_rawDesc = []byte{
 	0x6c, 0x69, 0x66, 0x65, 0x22, 0x36, 0x0a, 0x1c, 0x47, 0x65, 0x74, 0x56, 0x65, 0x68, 0x69, 0x63,
 	0x6c, 0x65, 0x73, 0x42, 0x79, 0x4f, 0x70, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x65, 0x71,
 	0x75, 0x65, 0x73, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0x55, 0x0a, 0x0f,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0x2e, 0x0a, 0x18,
+	0x47, 0x65, 0x74, 0x56, 0x65, 0x68, 0x69, 0x63, 0x6c, 0x65, 0x73, 0x42, 0x79, 0x59, 0x65, 0x61,
+	0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x79, 0x65, 0x61, 0x72,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x04, 0x79, 0x65, 0x61, 0x72, 0x22, 0x55, 0x0a, 0x0f,
 	0x56, 0x65, 0x68, 0x69, 0x63, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
 	0x28, 0x0a, 0x07, 0x76, 0x65, 0x68, 0x69, 0x63, 0x6c, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
 	0x32, 0x0e, 0x2e, 0x66, 0x6c, 0x65, 0x65, 0x74, 0x2e, 0x56, 0x65, 0x68, 0x69, 0x63, 0x6c, 0x65,
@@ -435,8 +485,8 @@ var file_internal_protobuf_schema_fleet_proto_rawDesc = []byte{
 	0x74, 0x65, 0x64, 0x22, 0x39, 0x0a, 0x0b, 0x56, 0x65, 0x68, 0x69, 0x63, 0x6c, 0x65, 0x4c, 0x69,
 	0x73, 0x74, 0x12, 0x2a, 0x0a, 0x08, 0x76, 0x65, 0x68, 0x69, 0x63, 0x6c, 0x65, 0x73, 0x18, 0x01,
 	0x20, 0x03, 0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x66, 0x6c, 0x65, 0x65, 0x74, 0x2e, 0x56, 0x65, 0x68,
-	0x69, 0x63, 0x6c, 0x65, 0x52, 0x08, 0x76, 0x65, 0x68, 0x69, 0x63, 0x6c, 0x65, 0x73, 0x32, 0xdf,
-	0x01, 0x0a, 0x0c, 0x46, 0x6c, 0x65, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12,
+	0x69, 0x63, 0x6c, 0x65, 0x52, 0x08, 0x76, 0x65, 0x68, 0x69, 0x63, 0x6c, 0x65, 0x73, 0x32, 0xab,
+	0x02, 0x0a, 0x0c, 0x46, 0x6c, 0x65, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12,
 	0x3c, 0x0a, 0x0c, 0x4c, 0x69, 0x73, 0x74, 0x56, 0x65, 0x68, 0x69, 0x63, 0x6c, 0x65, 0x73, 0x12,
 	0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75,
 	0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x12, 0x2e, 0x66, 0x6c, 0x65, 0x65, 0x74, 0x2e,
@@ -450,8 +500,13 @@ var file_internal_protobuf_schema_fleet_proto_rawDesc = []byte{
 	0x74, 0x56, 0x65, 0x68, 0x69, 0x63, 0x6c, 0x65, 0x73, 0x42, 0x79, 0x4f, 0x70, 0x53, 0x74, 0x61,
 	0x74, 0x75, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x12, 0x2e, 0x66, 0x6c, 0x65,
 	0x65, 0x74, 0x2e, 0x56, 0x65, 0x68, 0x69, 0x63, 0x6c, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x22, 0x00,
-	0x42, 0x14, 0x5a, 0x12, 0x70, 0x6b, 0x67, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66,
-	0x2f, 0x66, 0x6c, 0x65, 0x65, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x12, 0x4a, 0x0a, 0x11, 0x47, 0x65, 0x74, 0x56, 0x65, 0x68, 0x69, 0x63, 0x6c, 0x65, 0x73, 0x42,
+	0x79, 0x59, 0x65, 0x61, 0x72, 0x12, 0x1f, 0x2e, 0x66, 0x6c, 0x65, 0x65, 0x74, 0x2e, 0x47, 0x65,
+	0x74, 0x56, 0x65, 0x68, 0x69, 0x63, 0x6c, 0x65, 0x73, 0x42, 0x79, 0x59, 0x65, 0x61, 0x72, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x12, 0x2e, 0x66, 0x6c, 0x65, 0x65, 0x74, 0x2e, 0x56,
+	0x65, 0x68, 0x69, 0x63, 0x6c, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x22, 0x00, 0x42, 0x14, 0x5a, 0x12,
+	0x70, 0x6b, 0x67, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x66, 0x6c, 0x65,
+	0x65, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -466,26 +521,29 @@ func file_internal_protobuf_schema_fleet_proto_rawDescGZIP() []byte {
 	return file_internal_protobuf_schema_fleet_proto_rawDescData
 }
 
-var file_internal_protobuf_schema_fleet_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_internal_protobuf_schema_fleet_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_internal_protobuf_schema_fleet_proto_goTypes = []interface{}{
 	(*Vehicle)(nil),                      // 0: fleet.Vehicle
 	(*VehicleRequest)(nil),               // 1: fleet.VehicleRequest
 	(*GetVehiclesByOpStatusRequest)(nil), // 2: fleet.GetVehiclesByOpStatusRequest
-	(*VehicleResponse)(nil),              // 3: fleet.VehicleResponse
-	(*VehicleList)(nil),                  // 4: fleet.VehicleList
-	(*emptypb.Empty)(nil),                // 5: google.protobuf.Empty
+	(*GetVehiclesByYearRequest)(nil),     // 3: fleet.GetVehiclesByYearRequest
+	(*VehicleResponse)(nil),              // 4: fleet.VehicleResponse
+	(*VehicleList)(nil),                  // 5: fleet.VehicleList
+	(*emptypb.Empty)(nil),                // 6: google.protobuf.Empty
 }
 var file_internal_protobuf_schema_fleet_proto_depIdxs = []int32{
 	0, // 0: fleet.VehicleResponse.vehicle:type_name -> fleet.Vehicle
 	0, // 1: fleet.VehicleList.vehicles:type_name -> fleet.Vehicle
-	5, // 2: fleet.FleetService.ListVehicles:input_type -> google.protobuf.Empty
+	6, // 2: fleet.FleetService.ListVehicles:input_type -> google.protobuf.Empty
 	1, // 3: fleet.FleetService.AddVehicle:input_type -> fleet.VehicleRequest
 	2, // 4: fleet.FleetService.GetVehiclesByOpStatus:input_type -> fleet.GetVehiclesByOpStatusRequest
-	4, // 5: fleet.FleetService.ListVehicles:output_type -> fleet.VehicleList
-	3, // 6: fleet.FleetService.AddVehicle:output_type -> fleet.VehicleResponse
-	4, // 7: fleet.FleetService.GetVehiclesByOpStatus:output_type -> fleet.VehicleList
-	5, // [5:8] is the sub-list for method output_type
-	2, // [2:5] is the sub-list for method input_type
+	3, // 5: fleet.FleetService.GetVehiclesByYear:input_type -> fleet.GetVehiclesByYearRequest
+	5, // 6: fleet.FleetService.ListVehicles:output_type -> fleet.VehicleList
+	4, // 7: fleet.FleetService.AddVehicle:output_type -> fleet.VehicleResponse
+	5, // 8: fleet.FleetService.GetVehiclesByOpStatus:output_type -> fleet.VehicleList
+	5, // 9: fleet.FleetService.GetVehiclesByYear:output_type -> fleet.VehicleList
+	6, // [6:10] is the sub-list for method output_type
+	2, // [2:6] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
 	2, // [2:2] is the sub-list for extension extendee
 	0, // [0:2] is the sub-list for field type_name
@@ -534,7 +592,7 @@ func file_internal_protobuf_schema_fleet_proto_init() {
 			}
 		}
 		file_internal_protobuf_schema_fleet_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*VehicleResponse); i {
+			switch v := v.(*GetVehiclesByYearRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -546,6 +604,18 @@ func file_internal_protobuf_schema_fleet_proto_init() {
 			}
 		}
 		file_internal_protobuf_schema_fleet_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*VehicleResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_internal_protobuf_schema_fleet_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*VehicleList); i {
 			case 0:
 				return &v.state
@@ -564,7 +634,7 @@ func file_internal_protobuf_schema_fleet_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_internal_protobuf_schema_fleet_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

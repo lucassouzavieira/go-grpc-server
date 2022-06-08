@@ -54,6 +54,25 @@ func (s *FleetServer) GetVehiclesByOpStatus(ctx context.Context, req *fleet.GetV
 	}, nil
 }
 
+func (s *FleetServer) GetVehiclesByYear(ctx context.Context, req *fleet.GetVehiclesByYearRequest) (*fleet.VehicleList, error) {
+	repo := s.Repository
+	fleetHandler, err := NewFleetHandler(repo)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	vehicles, err := fleetHandler.GetVehiclesByYear(req.GetYear())
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return &fleet.VehicleList{
+		Vehicles: vehicles,
+	}, nil
+}
+
 func (s *FleetServer) AddVehicle(ctx context.Context, req *fleet.VehicleRequest) (*fleet.VehicleResponse, error) {
 	repo := s.Repository
 	fleetHandler, err := NewFleetHandler(repo)
