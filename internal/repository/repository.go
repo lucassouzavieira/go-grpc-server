@@ -2,7 +2,7 @@ package repository
 
 import (
 	"encoding/csv"
-	"log"
+	log "github.com/sirupsen/logrus"
 	"os"
 )
 
@@ -29,10 +29,9 @@ func (r *Repository) Type() string {
 }
 
 func (r *Repository) GetData() ([][]string, error) {
-	logger := log.New(os.Stderr, "repository: ", 2)
 	f, err := os.Open(r.filepath)
 	if err != nil {
-		logger.Fatalln(err)
+		log.Fatalln(err)
 	}
 
 	defer f.Close()
@@ -48,11 +47,10 @@ func (r *Repository) GetData() ([][]string, error) {
 }
 
 func (r *Repository) AddData(l []string) error {
-	logger := log.New(os.Stderr, "repository: ", 2)
 	f, err := os.Open(r.filepath)
 
 	if err != nil {
-		logger.Fatalln(err)
+		log.Fatalln(err)
 	}
 
 	defer f.Close()
@@ -61,7 +59,7 @@ func (r *Repository) AddData(l []string) error {
 	err = csvWriter.Write(l)
 
 	if err != nil {
-		logger.Fatalln(err)
+		log.Fatalln(err)
 	}
 
 	csvWriter.Flush()
@@ -69,10 +67,9 @@ func (r *Repository) AddData(l []string) error {
 }
 
 func (r *Repository) Count() (int, error) {
-	logger := log.New(os.Stderr, "repository: ", 2)
 	f, err := os.Open(r.filepath)
 	if err != nil {
-		logger.Fatalln(err)
+		log.Fatalln(err)
 	}
 
 	defer f.Close()

@@ -2,8 +2,7 @@ package grpc
 
 // Loads data from a csv entry and transform to a proto model struct
 import (
-	"log"
-	"os"
+	log "github.com/sirupsen/logrus"
 	"strconv"
 
 	repository "github.com/lucassouzavieira/go-grpc-server/internal/repository"
@@ -16,11 +15,10 @@ type FleetHandler struct {
 }
 
 func NewFleetHandler(r *repository.Repository) (*FleetHandler, error) {
-	logger := log.New(os.Stderr, "App info: ", 2)
 	data, err := r.GetData()
 
 	if err != nil {
-		logger.Fatal(err)
+		log.Fatal(err)
 	}
 
 	var vehicles []*pbfleet.Vehicle
@@ -45,17 +43,16 @@ func (h *FleetHandler) GetVehicles() ([]*pbfleet.Vehicle, error) {
 
 // package internal functions
 func vehicleFromCsv(s []string) pbfleet.Vehicle {
-	logger := log.New(os.Stderr, "App info: ", 2)
 	registrationYear, err := strconv.Atoi(s[7])
 
 	if err != nil {
-		logger.Fatal(err)
+		log.Fatal(err)
 	}
 
 	life, err := strconv.Atoi(s[8])
 
 	if err != nil {
-		logger.Fatal(err)
+		log.Fatal(err)
 	}
 
 	return pbfleet.Vehicle{

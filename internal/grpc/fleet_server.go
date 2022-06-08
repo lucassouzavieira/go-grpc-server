@@ -2,11 +2,11 @@ package grpc
 
 import (
 	"context"
+
 	"github.com/lucassouzavieira/go-grpc-server/internal/repository"
 	pbfleet "github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/schema/fleet"
+	log "github.com/sirupsen/logrus"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
-	"log"
-	"os"
 )
 
 var (
@@ -18,19 +18,17 @@ type FleetServer struct {
 }
 
 func (s *FleetServer) ListVehicles(ctx context.Context, in *emptypb.Empty) (*pbfleet.VehicleList, error) {
-	logger := log.New(os.Stderr, "App info: ", 2)
-
 	repo := repository.NewRepository(fleetData)
 	fleetHandler, err := NewFleetHandler(repo)
 
 	if err != nil {
-		logger.Fatal(err)
+		log.Fatal(err)
 	}
 
 	vehicles, err := fleetHandler.GetVehicles()
 
 	if err != nil {
-		logger.Fatal(err)
+		log.Fatal(err)
 	}
 
 	return &pbfleet.VehicleList{
