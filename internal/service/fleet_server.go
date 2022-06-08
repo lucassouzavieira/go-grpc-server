@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/lucassouzavieira/go-grpc-server/internal/repository"
-	pbfleet "github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/fleet"
+	"github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/fleet"
 	log "github.com/sirupsen/logrus"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
@@ -14,10 +14,10 @@ var (
 )
 
 type FleetServer struct {
-	pbfleet.UnimplementedFleetServiceServer
+	fleet.UnimplementedFleetServiceServer
 }
 
-func (s *FleetServer) ListVehicles(ctx context.Context, in *emptypb.Empty) (*pbfleet.VehicleList, error) {
+func (s *FleetServer) ListVehicles(ctx context.Context, in *emptypb.Empty) (*fleet.VehicleList, error) {
 	repo := repository.NewRepository(fleetData)
 	fleetHandler, err := NewFleetHandler(repo)
 
@@ -31,14 +31,33 @@ func (s *FleetServer) ListVehicles(ctx context.Context, in *emptypb.Empty) (*pbf
 		log.Fatal(err)
 	}
 
-	return &pbfleet.VehicleList{
+	return &fleet.VehicleList{
 		Vehicles: vehicles,
 	}, nil
 }
 
-func (s *FleetServer) AddVehicle(ctx context.Context, in *pbfleet.VehicleRequest) (*pbfleet.VehicleResponse, error) {
-	response := &pbfleet.VehicleResponse{
-		Vehicle: &pbfleet.Vehicle{
+func (s *FleetServer) GetTrainingVehicles(ctx context.Context, in *emptypb.Empty) (*fleet.VehicleList, error) {
+	repo := repository.NewRepository(fleetData)
+	fleetHandler, err := NewFleetHandler(repo)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	vehicles, err := fleetHandler.GetVehiclesByOperationalStatus("TRAINING")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return &fleet.VehicleList{
+		Vehicles: vehicles,
+	}, nil
+}
+
+func (s *FleetServer) AddVehicle(ctx context.Context, in *fleet.VehicleRequest) (*fleet.VehicleResponse, error) {
+	response := &fleet.VehicleResponse{
+		Vehicle: &fleet.Vehicle{
 			FleetNumber:       "",
 			OperationalStatus: "",
 			Lfb:               "",

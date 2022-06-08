@@ -11,9 +11,9 @@ option go_package = "pkg/protobuf/fleet";
 service FleetService {
     rpc ListVehicles(google.protobuf.Empty) returns (VehicleList) {}
     rpc AddVehicle(VehicleRequest) returns (VehicleResponse) {}
-    rpc GetTrainingVehicles(VehicleRequest) returns (VehicleList) {}
-    rpc GetReserveVehicles(VehicleRequest) returns (VehicleList) {}
-    rpc GetActiveVehicles(VehicleRequest) returns (VehicleList) {}
+    rpc GetTrainingVehicles(google.protobuf.Empty) returns (VehicleList) {}
+    rpc GetReserveVehicles(google.protobuf.Empty) returns (VehicleList) {}
+    rpc GetActiveVehicles(google.protobuf.Empty) returns (VehicleList) {}
 }
 
 message Vehicle {

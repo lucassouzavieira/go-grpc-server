@@ -25,9 +25,9 @@ const _ = grpc.SupportPackageIsVersion7
 type FleetServiceClient interface {
 	ListVehicles(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*VehicleList, error)
 	AddVehicle(ctx context.Context, in *VehicleRequest, opts ...grpc.CallOption) (*VehicleResponse, error)
-	GetTrainingVehicles(ctx context.Context, in *VehicleRequest, opts ...grpc.CallOption) (*VehicleList, error)
-	GetReserveVehicles(ctx context.Context, in *VehicleRequest, opts ...grpc.CallOption) (*VehicleList, error)
-	GetActiveVehicles(ctx context.Context, in *VehicleRequest, opts ...grpc.CallOption) (*VehicleList, error)
+	GetTrainingVehicles(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*VehicleList, error)
+	GetReserveVehicles(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*VehicleList, error)
+	GetActiveVehicles(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*VehicleList, error)
 }
 
 type fleetServiceClient struct {
@@ -56,7 +56,7 @@ func (c *fleetServiceClient) AddVehicle(ctx context.Context, in *VehicleRequest,
 	return out, nil
 }
 
-func (c *fleetServiceClient) GetTrainingVehicles(ctx context.Context, in *VehicleRequest, opts ...grpc.CallOption) (*VehicleList, error) {
+func (c *fleetServiceClient) GetTrainingVehicles(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*VehicleList, error) {
 	out := new(VehicleList)
 	err := c.cc.Invoke(ctx, "/fleet.FleetService/GetTrainingVehicles", in, out, opts...)
 	if err != nil {
@@ -65,7 +65,7 @@ func (c *fleetServiceClient) GetTrainingVehicles(ctx context.Context, in *Vehicl
 	return out, nil
 }
 
-func (c *fleetServiceClient) GetReserveVehicles(ctx context.Context, in *VehicleRequest, opts ...grpc.CallOption) (*VehicleList, error) {
+func (c *fleetServiceClient) GetReserveVehicles(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*VehicleList, error) {
 	out := new(VehicleList)
 	err := c.cc.Invoke(ctx, "/fleet.FleetService/GetReserveVehicles", in, out, opts...)
 	if err != nil {
@@ -74,7 +74,7 @@ func (c *fleetServiceClient) GetReserveVehicles(ctx context.Context, in *Vehicle
 	return out, nil
 }
 
-func (c *fleetServiceClient) GetActiveVehicles(ctx context.Context, in *VehicleRequest, opts ...grpc.CallOption) (*VehicleList, error) {
+func (c *fleetServiceClient) GetActiveVehicles(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*VehicleList, error) {
 	out := new(VehicleList)
 	err := c.cc.Invoke(ctx, "/fleet.FleetService/GetActiveVehicles", in, out, opts...)
 	if err != nil {
@@ -89,9 +89,9 @@ func (c *fleetServiceClient) GetActiveVehicles(ctx context.Context, in *VehicleR
 type FleetServiceServer interface {
 	ListVehicles(context.Context, *emptypb.Empty) (*VehicleList, error)
 	AddVehicle(context.Context, *VehicleRequest) (*VehicleResponse, error)
-	GetTrainingVehicles(context.Context, *VehicleRequest) (*VehicleList, error)
-	GetReserveVehicles(context.Context, *VehicleRequest) (*VehicleList, error)
-	GetActiveVehicles(context.Context, *VehicleRequest) (*VehicleList, error)
+	GetTrainingVehicles(context.Context, *emptypb.Empty) (*VehicleList, error)
+	GetReserveVehicles(context.Context, *emptypb.Empty) (*VehicleList, error)
+	GetActiveVehicles(context.Context, *emptypb.Empty) (*VehicleList, error)
 	mustEmbedUnimplementedFleetServiceServer()
 }
 
@@ -105,13 +105,13 @@ func (UnimplementedFleetServiceServer) ListVehicles(context.Context, *emptypb.Em
 func (UnimplementedFleetServiceServer) AddVehicle(context.Context, *VehicleRequest) (*VehicleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddVehicle not implemented")
 }
-func (UnimplementedFleetServiceServer) GetTrainingVehicles(context.Context, *VehicleRequest) (*VehicleList, error) {
+func (UnimplementedFleetServiceServer) GetTrainingVehicles(context.Context, *emptypb.Empty) (*VehicleList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTrainingVehicles not implemented")
 }
-func (UnimplementedFleetServiceServer) GetReserveVehicles(context.Context, *VehicleRequest) (*VehicleList, error) {
+func (UnimplementedFleetServiceServer) GetReserveVehicles(context.Context, *emptypb.Empty) (*VehicleList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetReserveVehicles not implemented")
 }
-func (UnimplementedFleetServiceServer) GetActiveVehicles(context.Context, *VehicleRequest) (*VehicleList, error) {
+func (UnimplementedFleetServiceServer) GetActiveVehicles(context.Context, *emptypb.Empty) (*VehicleList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetActiveVehicles not implemented")
 }
 func (UnimplementedFleetServiceServer) mustEmbedUnimplementedFleetServiceServer() {}
@@ -164,7 +164,7 @@ func _FleetService_AddVehicle_Handler(srv interface{}, ctx context.Context, dec 
 }
 
 func _FleetService_GetTrainingVehicles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(VehicleRequest)
+	in := new(emptypb.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -176,13 +176,13 @@ func _FleetService_GetTrainingVehicles_Handler(srv interface{}, ctx context.Cont
 		FullMethod: "/fleet.FleetService/GetTrainingVehicles",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FleetServiceServer).GetTrainingVehicles(ctx, req.(*VehicleRequest))
+		return srv.(FleetServiceServer).GetTrainingVehicles(ctx, req.(*emptypb.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _FleetService_GetReserveVehicles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(VehicleRequest)
+	in := new(emptypb.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -194,13 +194,13 @@ func _FleetService_GetReserveVehicles_Handler(srv interface{}, ctx context.Conte
 		FullMethod: "/fleet.FleetService/GetReserveVehicles",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FleetServiceServer).GetReserveVehicles(ctx, req.(*VehicleRequest))
+		return srv.(FleetServiceServer).GetReserveVehicles(ctx, req.(*emptypb.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _FleetService_GetActiveVehicles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(VehicleRequest)
+	in := new(emptypb.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -212,7 +212,7 @@ func _FleetService_GetActiveVehicles_Handler(srv interface{}, ctx context.Contex
 		FullMethod: "/fleet.FleetService/GetActiveVehicles",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FleetServiceServer).GetActiveVehicles(ctx, req.(*VehicleRequest))
+		return srv.(FleetServiceServer).GetActiveVehicles(ctx, req.(*emptypb.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
