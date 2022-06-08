@@ -7,6 +7,7 @@ import (
 	"github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/fleet"
 	log "github.com/sirupsen/logrus"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	"k8s.io/apimachinery/pkg/util/rand"
 )
 
 var (
@@ -55,23 +56,39 @@ func (s *FleetServer) GetVehiclesByOpStatus(ctx context.Context, req *fleet.GetV
 	}, nil
 }
 
-func (s *FleetServer) AddVehicle(ctx context.Context, in *fleet.VehicleRequest) (*fleet.VehicleResponse, error) {
-	response := &fleet.VehicleResponse{
-		Vehicle: &fleet.Vehicle{
-			FleetNumber:       "",
-			OperationalStatus: "",
-			Lfb:               "",
-			Make:              "",
-			Model:             "",
-			Type:              "",
-			Category:          "",
-			RegistrationYear:  0,
-			Life:              0,
-		},
-		Created: false,
+func (s *FleetServer) AddVehicle(ctx context.Context, req *fleet.VehicleRequest) (*fleet.VehicleResponse, error) {
+	repo := repository.NewRepository(fleetData)
+	fleetHandler, err := NewFleetHandler(repo)
+
+	if err != nil {
+		log.Fatal(err)
+		return nil, err
 	}
 
-	return response, nil
+	vehicle := &fleet.Vehicle{
+		FleetNumber:       rand.String(5),
+		OperationalStatus: req.GetOperationalStatus(),
+		Lfb:               req.GetLfb(),
+		Make:              req.GetMake(),
+		Model:             req.GetModel(),
+		Type:              req.GetType(),
+		Category:          req.GetCategory(),
+		RegistrationYear:  req.GetRegistrationYear(),
+		Life:              req.GetLife(),
+	}
+
+	// TODO Add data
+	res, err := fleetHandler.SaveVehicle(vehicle)
+
+	if err != nil {
+		log.Fatal(err)
+		return nil, err
+	}
+
+	return &fleet.VehicleResponse{
+		Vehicle: vehicle,
+		Created: res,
+	}, nil
 }
 
 func NewFleetServer() (*FleetServer, error) {
