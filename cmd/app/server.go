@@ -22,7 +22,6 @@ import (
 )
 
 var (
-	version    = "v1"
 	grpcPort   = flag.Int("grpcPort", 9200, "gRPC por")
 	grpcServer *grpc.Server
 	fleet_csv  = "../data/lfb_fleet_list_oct_2019.csv"
