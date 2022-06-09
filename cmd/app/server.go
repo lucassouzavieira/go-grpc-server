@@ -13,6 +13,7 @@ import (
 	"github.com/lucassouzavieira/go-grpc-server/internal/repository"
 	"github.com/lucassouzavieira/go-grpc-server/internal/service"
 	"github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/fleet"
+	"github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/incident"
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/sync/errgroup"
 
@@ -22,9 +23,10 @@ import (
 )
 
 var (
-	grpcPort   = flag.Int("grpcPort", 9200, "gRPC por")
-	grpcServer *grpc.Server
-	fleet_csv  = "../data/lfb_fleet_list_oct_2019.csv"
+	grpcPort     = flag.Int("grpcPort", 9200, "gRPC por")
+	grpcServer   *grpc.Server
+	fleet_csv    = "../data/lfb_fleet_list_oct_2019.csv"
+	incident_csv = "../data/animal_rescue_incidents_attended_lfb_from_jan_2009.csv"
 )
 
 func serve() {
@@ -52,10 +54,17 @@ func serve() {
 			}).WithError(err)
 		}
 
-		repo := repository.NewRepository(fleet_csv)
+		fleetRepo := repository.NewRepository(fleet_csv)
+		incidentRepo := repository.NewRepository(incident_csv)
+
 		s1 := service.FleetServer{
-			Repository:                      repo,
+			Repository:                      fleetRepo,
 			UnimplementedFleetServiceServer: fleet.UnimplementedFleetServiceServer{},
+		}
+
+		s2 := service.IncidentServer{
+			Repository:                         incidentRepo,
+			UnimplementedIncidentServiceServer: incident.UnimplementedIncidentServiceServer{},
 		}
 
 		grpcServer := grpc.NewServer(
@@ -63,6 +72,8 @@ func serve() {
 		)
 
 		fleet.RegisterFleetServiceServer(grpcServer, &s1)
+		incident.RegisterIncidentServiceServer(grpcServer, &s2)
+		
 		reflection.Register(grpcServer)
 
 		log.WithFields(log.Fields{

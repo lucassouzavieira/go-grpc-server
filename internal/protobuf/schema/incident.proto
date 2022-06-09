@@ -11,6 +11,7 @@ option go_package = "pkg/protobuf/incident";
 // Incidents server
 service IncidentService {
     rpc ListIncidents(google.protobuf.Empty) returns (IncidentList) {}
+    rpc GetIncidentsByAnimalGroup(GetIncidentsByAnimalGroupRequest) returns (IncidentList) {}
 }
 
 message Incident {
@@ -67,4 +68,8 @@ message Incident {
 
 message IncidentList {
     repeated Incident incidents = 1;
+}
+
+message GetIncidentsByAnimalGroupRequest {
+    string group = 1;
 }

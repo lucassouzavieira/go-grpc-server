@@ -228,6 +228,53 @@ func (x *IncidentList) GetIncidents() []*Incident {
 	return nil
 }
 
+type GetIncidentsByAnimalGroupRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Group string `protobuf:"bytes,1,opt,name=group,proto3" json:"group,omitempty"`
+}
+
+func (x *GetIncidentsByAnimalGroupRequest) Reset() {
+	*x = GetIncidentsByAnimalGroupRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_internal_protobuf_schema_incident_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetIncidentsByAnimalGroupRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetIncidentsByAnimalGroupRequest) ProtoMessage() {}
+
+func (x *GetIncidentsByAnimalGroupRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_internal_protobuf_schema_incident_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetIncidentsByAnimalGroupRequest.ProtoReflect.Descriptor instead.
+func (*GetIncidentsByAnimalGroupRequest) Descriptor() ([]byte, []int) {
+	return file_internal_protobuf_schema_incident_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *GetIncidentsByAnimalGroupRequest) GetGroup() string {
+	if x != nil {
+		return x.Group
+	}
+	return ""
+}
+
 type Incident_Call struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -239,7 +286,7 @@ type Incident_Call struct {
 func (x *Incident_Call) Reset() {
 	*x = Incident_Call{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_internal_protobuf_schema_incident_proto_msgTypes[2]
+		mi := &file_internal_protobuf_schema_incident_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -252,7 +299,7 @@ func (x *Incident_Call) String() string {
 func (*Incident_Call) ProtoMessage() {}
 
 func (x *Incident_Call) ProtoReflect() protoreflect.Message {
-	mi := &file_internal_protobuf_schema_incident_proto_msgTypes[2]
+	mi := &file_internal_protobuf_schema_incident_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -287,7 +334,7 @@ type Incident_Property struct {
 func (x *Incident_Property) Reset() {
 	*x = Incident_Property{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_internal_protobuf_schema_incident_proto_msgTypes[3]
+		mi := &file_internal_protobuf_schema_incident_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -300,7 +347,7 @@ func (x *Incident_Property) String() string {
 func (*Incident_Property) ProtoMessage() {}
 
 func (x *Incident_Property) ProtoReflect() protoreflect.Message {
-	mi := &file_internal_protobuf_schema_incident_proto_msgTypes[3]
+	mi := &file_internal_protobuf_schema_incident_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -342,7 +389,7 @@ type Incident_SpecialService struct {
 func (x *Incident_SpecialService) Reset() {
 	*x = Incident_SpecialService{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_internal_protobuf_schema_incident_proto_msgTypes[4]
+		mi := &file_internal_protobuf_schema_incident_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -355,7 +402,7 @@ func (x *Incident_SpecialService) String() string {
 func (*Incident_SpecialService) ProtoMessage() {}
 
 func (x *Incident_SpecialService) ProtoReflect() protoreflect.Message {
-	mi := &file_internal_protobuf_schema_incident_proto_msgTypes[4]
+	mi := &file_internal_protobuf_schema_incident_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -397,7 +444,7 @@ type Incident_Ward struct {
 func (x *Incident_Ward) Reset() {
 	*x = Incident_Ward{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_internal_protobuf_schema_incident_proto_msgTypes[5]
+		mi := &file_internal_protobuf_schema_incident_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -410,7 +457,7 @@ func (x *Incident_Ward) String() string {
 func (*Incident_Ward) ProtoMessage() {}
 
 func (x *Incident_Ward) ProtoReflect() protoreflect.Message {
-	mi := &file_internal_protobuf_schema_incident_proto_msgTypes[5]
+	mi := &file_internal_protobuf_schema_incident_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -456,7 +503,7 @@ type Incident_Address struct {
 func (x *Incident_Address) Reset() {
 	*x = Incident_Address{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_internal_protobuf_schema_incident_proto_msgTypes[6]
+		mi := &file_internal_protobuf_schema_incident_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -469,7 +516,7 @@ func (x *Incident_Address) String() string {
 func (*Incident_Address) ProtoMessage() {}
 
 func (x *Incident_Address) ProtoReflect() protoreflect.Message {
-	mi := &file_internal_protobuf_schema_incident_proto_msgTypes[6]
+	mi := &file_internal_protobuf_schema_incident_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -540,7 +587,7 @@ type Incident_Address_Borough struct {
 func (x *Incident_Address_Borough) Reset() {
 	*x = Incident_Address_Borough{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_internal_protobuf_schema_incident_proto_msgTypes[7]
+		mi := &file_internal_protobuf_schema_incident_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -553,7 +600,7 @@ func (x *Incident_Address_Borough) String() string {
 func (*Incident_Address_Borough) ProtoMessage() {}
 
 func (x *Incident_Address_Borough) ProtoReflect() protoreflect.Message {
-	mi := &file_internal_protobuf_schema_incident_proto_msgTypes[7]
+	mi := &file_internal_protobuf_schema_incident_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -679,15 +726,24 @@ var file_internal_protobuf_schema_incident_proto_rawDesc = []byte{
 	0x64, 0x65, 0x6e, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x30, 0x0a, 0x09, 0x69, 0x6e, 0x63, 0x69,
 	0x64, 0x65, 0x6e, 0x74, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x12, 0x2e, 0x69, 0x6e,
 	0x63, 0x69, 0x64, 0x65, 0x6e, 0x74, 0x2e, 0x49, 0x6e, 0x63, 0x69, 0x64, 0x65, 0x6e, 0x74, 0x52,
-	0x09, 0x69, 0x6e, 0x63, 0x69, 0x64, 0x65, 0x6e, 0x74, 0x73, 0x32, 0x54, 0x0a, 0x0f, 0x49, 0x6e,
-	0x63, 0x69, 0x64, 0x65, 0x6e, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x41, 0x0a,
-	0x0d, 0x4c, 0x69, 0x73, 0x74, 0x49, 0x6e, 0x63, 0x69, 0x64, 0x65, 0x6e, 0x74, 0x73, 0x12, 0x16,
-	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66,
-	0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x16, 0x2e, 0x69, 0x6e, 0x63, 0x69, 0x64, 0x65, 0x6e,
-	0x74, 0x2e, 0x49, 0x6e, 0x63, 0x69, 0x64, 0x65, 0x6e, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x22, 0x00,
-	0x42, 0x17, 0x5a, 0x15, 0x70, 0x6b, 0x67, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66,
-	0x2f, 0x69, 0x6e, 0x63, 0x69, 0x64, 0x65, 0x6e, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x33,
+	0x09, 0x69, 0x6e, 0x63, 0x69, 0x64, 0x65, 0x6e, 0x74, 0x73, 0x22, 0x38, 0x0a, 0x20, 0x47, 0x65,
+	0x74, 0x49, 0x6e, 0x63, 0x69, 0x64, 0x65, 0x6e, 0x74, 0x73, 0x42, 0x79, 0x41, 0x6e, 0x69, 0x6d,
+	0x61, 0x6c, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x14,
+	0x0a, 0x05, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x67,
+	0x72, 0x6f, 0x75, 0x70, 0x32, 0xb7, 0x01, 0x0a, 0x0f, 0x49, 0x6e, 0x63, 0x69, 0x64, 0x65, 0x6e,
+	0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x41, 0x0a, 0x0d, 0x4c, 0x69, 0x73, 0x74,
+	0x49, 0x6e, 0x63, 0x69, 0x64, 0x65, 0x6e, 0x74, 0x73, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
+	0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74,
+	0x79, 0x1a, 0x16, 0x2e, 0x69, 0x6e, 0x63, 0x69, 0x64, 0x65, 0x6e, 0x74, 0x2e, 0x49, 0x6e, 0x63,
+	0x69, 0x64, 0x65, 0x6e, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x22, 0x00, 0x12, 0x61, 0x0a, 0x19, 0x47,
+	0x65, 0x74, 0x49, 0x6e, 0x63, 0x69, 0x64, 0x65, 0x6e, 0x74, 0x73, 0x42, 0x79, 0x41, 0x6e, 0x69,
+	0x6d, 0x61, 0x6c, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x12, 0x2a, 0x2e, 0x69, 0x6e, 0x63, 0x69, 0x64,
+	0x65, 0x6e, 0x74, 0x2e, 0x47, 0x65, 0x74, 0x49, 0x6e, 0x63, 0x69, 0x64, 0x65, 0x6e, 0x74, 0x73,
+	0x42, 0x79, 0x41, 0x6e, 0x69, 0x6d, 0x61, 0x6c, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e, 0x69, 0x6e, 0x63, 0x69, 0x64, 0x65, 0x6e, 0x74, 0x2e,
+	0x49, 0x6e, 0x63, 0x69, 0x64, 0x65, 0x6e, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x22, 0x00, 0x42, 0x17,
+	0x5a, 0x15, 0x70, 0x6b, 0x67, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x69,
+	0x6e, 0x63, 0x69, 0x64, 0x65, 0x6e, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -702,35 +758,38 @@ func file_internal_protobuf_schema_incident_proto_rawDescGZIP() []byte {
 	return file_internal_protobuf_schema_incident_proto_rawDescData
 }
 
-var file_internal_protobuf_schema_incident_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_internal_protobuf_schema_incident_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_internal_protobuf_schema_incident_proto_goTypes = []interface{}{
-	(*Incident)(nil),                 // 0: incident.Incident
-	(*IncidentList)(nil),             // 1: incident.IncidentList
-	(*Incident_Call)(nil),            // 2: incident.Incident.Call
-	(*Incident_Property)(nil),        // 3: incident.Incident.Property
-	(*Incident_SpecialService)(nil),  // 4: incident.Incident.SpecialService
-	(*Incident_Ward)(nil),            // 5: incident.Incident.Ward
-	(*Incident_Address)(nil),         // 6: incident.Incident.Address
-	(*Incident_Address_Borough)(nil), // 7: incident.Incident.Address.Borough
-	(*timestamppb.Timestamp)(nil),    // 8: google.protobuf.Timestamp
-	(*emptypb.Empty)(nil),            // 9: google.protobuf.Empty
+	(*Incident)(nil),                         // 0: incident.Incident
+	(*IncidentList)(nil),                     // 1: incident.IncidentList
+	(*GetIncidentsByAnimalGroupRequest)(nil), // 2: incident.GetIncidentsByAnimalGroupRequest
+	(*Incident_Call)(nil),                    // 3: incident.Incident.Call
+	(*Incident_Property)(nil),                // 4: incident.Incident.Property
+	(*Incident_SpecialService)(nil),          // 5: incident.Incident.SpecialService
+	(*Incident_Ward)(nil),                    // 6: incident.Incident.Ward
+	(*Incident_Address)(nil),                 // 7: incident.Incident.Address
+	(*Incident_Address_Borough)(nil),         // 8: incident.Incident.Address.Borough
+	(*timestamppb.Timestamp)(nil),            // 9: google.protobuf.Timestamp
+	(*emptypb.Empty)(nil),                    // 10: google.protobuf.Empty
 }
 var file_internal_protobuf_schema_incident_proto_depIdxs = []int32{
-	8, // 0: incident.Incident.call_datetime:type_name -> google.protobuf.Timestamp
-	2, // 1: incident.Incident.origin:type_name -> incident.Incident.Call
-	3, // 2: incident.Incident.property:type_name -> incident.Incident.Property
-	4, // 3: incident.Incident.special_service:type_name -> incident.Incident.SpecialService
-	5, // 4: incident.Incident.ward:type_name -> incident.Incident.Ward
-	6, // 5: incident.Incident.address:type_name -> incident.Incident.Address
-	0, // 6: incident.IncidentList.incidents:type_name -> incident.Incident
-	7, // 7: incident.Incident.Address.borough_info:type_name -> incident.Incident.Address.Borough
-	9, // 8: incident.IncidentService.ListIncidents:input_type -> google.protobuf.Empty
-	1, // 9: incident.IncidentService.ListIncidents:output_type -> incident.IncidentList
-	9, // [9:10] is the sub-list for method output_type
-	8, // [8:9] is the sub-list for method input_type
-	8, // [8:8] is the sub-list for extension type_name
-	8, // [8:8] is the sub-list for extension extendee
-	0, // [0:8] is the sub-list for field type_name
+	9,  // 0: incident.Incident.call_datetime:type_name -> google.protobuf.Timestamp
+	3,  // 1: incident.Incident.origin:type_name -> incident.Incident.Call
+	4,  // 2: incident.Incident.property:type_name -> incident.Incident.Property
+	5,  // 3: incident.Incident.special_service:type_name -> incident.Incident.SpecialService
+	6,  // 4: incident.Incident.ward:type_name -> incident.Incident.Ward
+	7,  // 5: incident.Incident.address:type_name -> incident.Incident.Address
+	0,  // 6: incident.IncidentList.incidents:type_name -> incident.Incident
+	8,  // 7: incident.Incident.Address.borough_info:type_name -> incident.Incident.Address.Borough
+	10, // 8: incident.IncidentService.ListIncidents:input_type -> google.protobuf.Empty
+	2,  // 9: incident.IncidentService.GetIncidentsByAnimalGroup:input_type -> incident.GetIncidentsByAnimalGroupRequest
+	1,  // 10: incident.IncidentService.ListIncidents:output_type -> incident.IncidentList
+	1,  // 11: incident.IncidentService.GetIncidentsByAnimalGroup:output_type -> incident.IncidentList
+	10, // [10:12] is the sub-list for method output_type
+	8,  // [8:10] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_internal_protobuf_schema_incident_proto_init() }
@@ -764,7 +823,7 @@ func file_internal_protobuf_schema_incident_proto_init() {
 			}
 		}
 		file_internal_protobuf_schema_incident_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Incident_Call); i {
+			switch v := v.(*GetIncidentsByAnimalGroupRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -776,7 +835,7 @@ func file_internal_protobuf_schema_incident_proto_init() {
 			}
 		}
 		file_internal_protobuf_schema_incident_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Incident_Property); i {
+			switch v := v.(*Incident_Call); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -788,7 +847,7 @@ func file_internal_protobuf_schema_incident_proto_init() {
 			}
 		}
 		file_internal_protobuf_schema_incident_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Incident_SpecialService); i {
+			switch v := v.(*Incident_Property); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -800,7 +859,7 @@ func file_internal_protobuf_schema_incident_proto_init() {
 			}
 		}
 		file_internal_protobuf_schema_incident_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Incident_Ward); i {
+			switch v := v.(*Incident_SpecialService); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -812,7 +871,7 @@ func file_internal_protobuf_schema_incident_proto_init() {
 			}
 		}
 		file_internal_protobuf_schema_incident_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Incident_Address); i {
+			switch v := v.(*Incident_Ward); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -824,6 +883,18 @@ func file_internal_protobuf_schema_incident_proto_init() {
 			}
 		}
 		file_internal_protobuf_schema_incident_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Incident_Address); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_internal_protobuf_schema_incident_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Incident_Address_Borough); i {
 			case 0:
 				return &v.state
@@ -842,7 +913,7 @@ func file_internal_protobuf_schema_incident_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_internal_protobuf_schema_incident_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

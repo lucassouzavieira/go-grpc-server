@@ -24,6 +24,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type IncidentServiceClient interface {
 	ListIncidents(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*IncidentList, error)
+	GetIncidentsByAnimalGroup(ctx context.Context, in *GetIncidentsByAnimalGroupRequest, opts ...grpc.CallOption) (*IncidentList, error)
 }
 
 type incidentServiceClient struct {
@@ -43,11 +44,21 @@ func (c *incidentServiceClient) ListIncidents(ctx context.Context, in *emptypb.E
 	return out, nil
 }
 
+func (c *incidentServiceClient) GetIncidentsByAnimalGroup(ctx context.Context, in *GetIncidentsByAnimalGroupRequest, opts ...grpc.CallOption) (*IncidentList, error) {
+	out := new(IncidentList)
+	err := c.cc.Invoke(ctx, "/incident.IncidentService/GetIncidentsByAnimalGroup", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // IncidentServiceServer is the server API for IncidentService service.
 // All implementations must embed UnimplementedIncidentServiceServer
 // for forward compatibility
 type IncidentServiceServer interface {
 	ListIncidents(context.Context, *emptypb.Empty) (*IncidentList, error)
+	GetIncidentsByAnimalGroup(context.Context, *GetIncidentsByAnimalGroupRequest) (*IncidentList, error)
 	mustEmbedUnimplementedIncidentServiceServer()
 }
 
@@ -57,6 +68,9 @@ type UnimplementedIncidentServiceServer struct {
 
 func (UnimplementedIncidentServiceServer) ListIncidents(context.Context, *emptypb.Empty) (*IncidentList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListIncidents not implemented")
+}
+func (UnimplementedIncidentServiceServer) GetIncidentsByAnimalGroup(context.Context, *GetIncidentsByAnimalGroupRequest) (*IncidentList, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetIncidentsByAnimalGroup not implemented")
 }
 func (UnimplementedIncidentServiceServer) mustEmbedUnimplementedIncidentServiceServer() {}
 
@@ -89,6 +103,24 @@ func _IncidentService_ListIncidents_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _IncidentService_GetIncidentsByAnimalGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetIncidentsByAnimalGroupRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(IncidentServiceServer).GetIncidentsByAnimalGroup(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/incident.IncidentService/GetIncidentsByAnimalGroup",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(IncidentServiceServer).GetIncidentsByAnimalGroup(ctx, req.(*GetIncidentsByAnimalGroupRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // IncidentService_ServiceDesc is the grpc.ServiceDesc for IncidentService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -99,6 +131,10 @@ var IncidentService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListIncidents",
 			Handler:    _IncidentService_ListIncidents_Handler,
+		},
+		{
+			MethodName: "GetIncidentsByAnimalGroup",
+			Handler:    _IncidentService_GetIncidentsByAnimalGroup_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

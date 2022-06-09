@@ -101,8 +101,8 @@ func incidentFromCsv(s []string) incident.Incident {
 	}
 
 	return incident.Incident{
-		Number:               number.IntPart(),
-		CallDatetime:         &timestamppb.Timestamp{
+		Number: number.IntPart(),
+		CallDatetime: &timestamppb.Timestamp{
 			Seconds: date_time.Unix(),
 			Nanos:   int32(date_time.UnixNano()),
 		},
