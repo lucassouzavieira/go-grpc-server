@@ -34,6 +34,26 @@ func (s *IncidentServer) ListIncidents(ctx context.Context, in *emptypb.Empty) (
 	}, nil
 }
 
+func (s *IncidentServer) GetIncidentsByAnimalGroup(ctx context.Context, req *incident.GetIncidentsByAnimalGroupRequest) (*incident.IncidentList, error) {
+	handler, err := NewIncidentHandler(s.Repository)
+
+	if err != nil {
+		log.Fatal(err)
+		return nil, err
+	}
+
+	incidents, err := handler.GetIncidentsByAnimalGroup(req.GetGroup())
+
+	if err != nil {
+		log.Fatal(err)
+		return nil, err
+	}
+
+	return &incident.IncidentList{
+		Incidents: incidents,
+	}, nil
+}
+
 func NewIncidentServer(f string) (*IncidentServer, error) {
 	r := repository.NewRepository(f)
 

@@ -56,7 +56,7 @@ func (h *IncidentHandler) GetIncidentsByAnimalGroup(group string) ([]*incident.I
 	return filtered, nil
 }
 
-// Internal 
+// Internal
 func incidentFromCsv(s []string) incident.Incident {
 	numberStr := strings.ReplaceAll(s[0], "-", "")
 	number, err := decimal.NewFromString(numberStr)
