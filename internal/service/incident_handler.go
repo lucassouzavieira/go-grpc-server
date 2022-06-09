@@ -44,6 +44,19 @@ func (h *IncidentHandler) GetIncidents() ([]*incident.Incident, error) {
 	return h.i, nil
 }
 
+func (h *IncidentHandler) GetIncidentsByAnimalGroup(group string) ([]*incident.Incident, error) {
+	var filtered []*incident.Incident = make([]*incident.Incident, 0)
+
+	for _, i := range h.i {
+		if i.AnimalGroup == group {
+			filtered = append(filtered, i)
+		}
+	}
+
+	return filtered, nil
+}
+
+// Internal 
 func incidentFromCsv(s []string) incident.Incident {
 	numberStr := strings.ReplaceAll(s[0], "-", "")
 	number, err := decimal.NewFromString(numberStr)
