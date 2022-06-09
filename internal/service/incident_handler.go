@@ -21,6 +21,7 @@ func NewIncidentHandler(r *repository.Repository) (*IncidentHandler, error) {
 
 	if err != nil {
 		log.Fatal(err)
+		return nil, err
 	}
 
 	var incidents []*incident.Incident
@@ -44,13 +45,13 @@ func (h *IncidentHandler) GetIncidents() ([]*incident.Incident, error) {
 }
 
 func incidentFromCsv(s []string) incident.Incident {
-	numberStr := strings.ReplaceAll("", "-", s[0])
+	numberStr := strings.ReplaceAll(s[0], "-", "")
 	number, err := decimal.NewFromString(numberStr)
 
 	if err != nil {
 		log.WithFields(log.Fields{
 			"error": "Error trying to parse Incident number",
-		}).WithError(err)
+		}).Warn(err)
 	}
 
 	year, err := decimal.NewFromString(s[2])
@@ -58,48 +59,65 @@ func incidentFromCsv(s []string) incident.Incident {
 	if err != nil {
 		log.WithFields(log.Fields{
 			"error": "Error trying to parse Incident year",
-		}).WithError(err)
+		}).Warn(err)
 	}
 
-	pumpCount, err := decimal.NewFromString(s[5])
+	var pumpCount int32
+	if s[5] != "NULL" {
+		pumpCountRepresentation, err := decimal.NewFromString(s[5])
+		if err != nil {
+			log.WithFields(log.Fields{
+				"error": "Error trying to parse Incident pumpCount",
+			}).Warn(err)
+		}
 
-	if err != nil {
-		log.WithFields(log.Fields{
-			"error": "Error trying to parse Incident pumpCount",
-		}).WithError(err)
+		pumpCount = int32(pumpCountRepresentation.IntPart())
 	}
 
-	pumpHoursCount, err := decimal.NewFromString(s[6])
-	if err != nil {
-		log.WithFields(log.Fields{
-			"error": "Error trying to parse Incident pumpHoursCount",
-		}).WithError(err)
+	var pumpHoursCount int32
+	if s[5] != "NULL" {
+
+		pumpHoursCountRepresentation, err := decimal.NewFromString(s[6])
+		if err != nil {
+			log.WithFields(log.Fields{
+				"error": "Error trying to parse Incident pumpHoursCount",
+			}).Warn(err)
+		}
+
+		pumpHoursCount = int32(pumpHoursCountRepresentation.IntPart())
 	}
 
-	latitude, err := decimal.NewFromString(s[29])
-	if err != nil {
-		log.WithFields(log.Fields{
-			"error": "Error trying to parse Incident latitude",
-		}).WithError(err)
+	var lat float64
+	var long float64
+	if s[29] != "NULL" {
+		latitude, err := decimal.NewFromString(s[29])
+		if err != nil {
+			log.WithFields(log.Fields{
+				"error": "Error trying to parse Incident latitude",
+			}).Warn(err)
+		}
+
+		lat, _ = latitude.Float64()
 	}
 
-	longitude, err := decimal.NewFromString(s[30])
-	if err != nil {
-		log.WithFields(log.Fields{
-			"error": "Error trying to parse Incident longitude",
-		}).WithError(err)
-	}
+	if s[30] != "NULL" {
+		latitude, err := decimal.NewFromString(s[29])
+		if err != nil {
+			log.WithFields(log.Fields{
+				"error": "Error trying to parse Incident latitude",
+			}).Warn(err)
+		}
 
-	lat, _ := latitude.Float64()
-	long, _ := longitude.Float64()
+		long, _ = latitude.Float64()
+	}
 
 	return incident.Incident{
 		Number:               number.IntPart(),
 		CallDatetime:         s[1],
 		Year:                 int32(year.IntPart()),
 		Type:                 s[4],
-		PumpCount:            int32(pumpCount.IntPart()),
-		PumpHoursTotal:       int32(pumpHoursCount.IntPart()),
+		PumpCount:            pumpCount,
+		PumpHoursTotal:       pumpHoursCount,
 		IncidentHourlyCost:   0,
 		IncidentNotionalCost: 0,
 		AnimalGroup:          s[10],

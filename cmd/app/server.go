@@ -51,7 +51,7 @@ func serve() {
 		if err != nil {
 			log.WithFields(log.Fields{
 				"error": "gRPC server: failed to listen",
-			}).WithError(err)
+			}).WithError(err).Fatal()
 		}
 
 		fleetRepo := repository.NewRepository(fleet_csv)
@@ -78,7 +78,7 @@ func serve() {
 
 		log.WithFields(log.Fields{
 			"message": "gRPC server: started...",
-		}).WithError(err)
+		}).Info(err)
 		return grpcServer.Serve(listener)
 	})
 
@@ -86,18 +86,18 @@ func serve() {
 	case <-interrupt:
 		log.WithFields(log.Fields{
 			"msg": "Interrupt signal received...",
-		}).WithContext(ctx)
+		}).WithContext(ctx).Warn()
 		break
 	case <-ctx.Done():
 		log.WithFields(log.Fields{
 			"msg": "Context done...",
-		}).WithContext(ctx)
+		}).WithContext(ctx).Warn()
 		break
 	}
 
 	log.WithFields(log.Fields{
 		"message": "gRPC server: received shutdown signal...",
-	})
+	}).Info()
 
 	cancel()
 
@@ -113,7 +113,7 @@ func serve() {
 	if err != nil {
 		log.WithFields(log.Fields{
 			"message": "Server returning an error...",
-		}).WithError(err)
+		}).WithError(err).Warn()
 		os.Exit(2)
 	}
 }

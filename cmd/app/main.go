@@ -8,8 +8,8 @@ import (
 func main() {
 	// Add logrus settings
 	log.SetFormatter(&log.JSONFormatter{})
-	log.SetOutput(os.Stderr)
-	log.SetLevel(log.DebugLevel)
+	log.SetOutput(os.Stdout)
+	log.SetLevel(log.InfoLevel)
 
 	serve()
 }

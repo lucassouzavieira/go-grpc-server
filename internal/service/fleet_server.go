@@ -17,17 +17,18 @@ type FleetServer struct {
 }
 
 func (s *FleetServer) ListVehicles(ctx context.Context, in *emptypb.Empty) (*fleet.VehicleList, error) {
-	repo := s.Repository
-	fleetHandler, err := NewFleetHandler(repo)
+	fleetHandler, err := NewFleetHandler(s.Repository)
 
 	if err != nil {
 		log.Fatal(err)
+		return nil, err
 	}
 
 	vehicles, err := fleetHandler.GetVehicles()
 
 	if err != nil {
 		log.Fatal(err)
+		return nil, err
 	}
 
 	return &fleet.VehicleList{
@@ -36,17 +37,18 @@ func (s *FleetServer) ListVehicles(ctx context.Context, in *emptypb.Empty) (*fle
 }
 
 func (s *FleetServer) GetVehiclesByOpStatus(ctx context.Context, req *fleet.GetVehiclesByOpStatusRequest) (*fleet.VehicleList, error) {
-	repo := s.Repository
-	fleetHandler, err := NewFleetHandler(repo)
+	fleetHandler, err := NewFleetHandler(s.Repository)
 
 	if err != nil {
 		log.Fatal(err)
+		return nil, err
 	}
 
 	vehicles, err := fleetHandler.GetVehiclesByOperationalStatus(req.GetStatus())
 
 	if err != nil {
 		log.Fatal(err)
+		return nil, err
 	}
 
 	return &fleet.VehicleList{
@@ -55,17 +57,18 @@ func (s *FleetServer) GetVehiclesByOpStatus(ctx context.Context, req *fleet.GetV
 }
 
 func (s *FleetServer) GetVehiclesByYear(ctx context.Context, req *fleet.GetVehiclesByYearRequest) (*fleet.VehicleList, error) {
-	repo := s.Repository
-	fleetHandler, err := NewFleetHandler(repo)
+	fleetHandler, err := NewFleetHandler(s.Repository)
 
 	if err != nil {
 		log.Fatal(err)
+		return nil, err
 	}
 
 	vehicles, err := fleetHandler.GetVehiclesByYear(req.GetYear())
 
 	if err != nil {
 		log.Fatal(err)
+		return nil, err
 	}
 
 	return &fleet.VehicleList{
@@ -74,8 +77,7 @@ func (s *FleetServer) GetVehiclesByYear(ctx context.Context, req *fleet.GetVehic
 }
 
 func (s *FleetServer) AddVehicle(ctx context.Context, req *fleet.VehicleRequest) (*fleet.VehicleResponse, error) {
-	repo := s.Repository
-	fleetHandler, err := NewFleetHandler(repo)
+	fleetHandler, err := NewFleetHandler(s.Repository)
 
 	if err != nil {
 		log.Fatal(err)

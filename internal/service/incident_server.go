@@ -15,17 +15,18 @@ type IncidentServer struct {
 }
 
 func (s *IncidentServer) ListIncidents(ctx context.Context, in *emptypb.Empty) (*incident.IncidentList, error) {
-	repo := s.Repository
-	handler, err := NewIncidentHandler(repo)
+	handler, err := NewIncidentHandler(s.Repository)
 
 	if err != nil {
 		log.Fatal(err)
+		return nil, err
 	}
 
 	incidents, err := handler.GetIncidents()
 
 	if err != nil {
 		log.Fatal(err)
+		return nil, err
 	}
 
 	return &incident.IncidentList{
