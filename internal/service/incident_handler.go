@@ -2,11 +2,10 @@ package service
 
 // Loads data from a csv entry and transform to a proto model struct
 import (
-	"time"
+	"strings"
 
 	"github.com/shopspring/decimal"
 	log "github.com/sirupsen/logrus"
-	"google.golang.org/protobuf/types/known/timestamppb"
 
 	repository "github.com/lucassouzavieira/go-grpc-server/internal/repository"
 	"github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/incident"
@@ -45,7 +44,8 @@ func (h *IncidentHandler) GetIncidents() ([]*incident.Incident, error) {
 }
 
 func incidentFromCsv(s []string) incident.Incident {
-	number, err := decimal.NewFromString(s[0])
+	numberStr := strings.ReplaceAll("", "-", s[0])
+	number, err := decimal.NewFromString(numberStr)
 
 	if err != nil {
 		log.WithFields(log.Fields{
@@ -93,19 +93,9 @@ func incidentFromCsv(s []string) incident.Incident {
 	lat, _ := latitude.Float64()
 	long, _ := longitude.Float64()
 
-	date_time, err := time.Parse("01/12/2006 10:45", s[1])
-	if err != nil {
-		log.WithFields(log.Fields{
-			"error": "Error trying to parse Incident call date and time",
-		}).WithError(err)
-	}
-
 	return incident.Incident{
-		Number: number.IntPart(),
-		CallDatetime: &timestamppb.Timestamp{
-			Seconds: date_time.Unix(),
-			Nanos:   int32(date_time.UnixNano()),
-		},
+		Number:               number.IntPart(),
+		CallDatetime:         s[1],
 		Year:                 int32(year.IntPart()),
 		Type:                 s[4],
 		PumpCount:            int32(pumpCount.IntPart()),

@@ -73,7 +73,7 @@ func serve() {
 
 		fleet.RegisterFleetServiceServer(grpcServer, &s1)
 		incident.RegisterIncidentServiceServer(grpcServer, &s2)
-		
+
 		reflection.Register(grpcServer)
 
 		log.WithFields(log.Fields{

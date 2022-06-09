@@ -3,8 +3,6 @@ syntax = "proto3";
 package incident;
 
 import "google/protobuf/empty.proto";
-import "google/protobuf/timestamp.proto";
-
 
 option go_package = "pkg/protobuf/incident";
 
@@ -15,6 +13,17 @@ service IncidentService {
 }
 
 message Incident {
+    int64 number = 1;
+    string call_datetime = 2;
+    int32 year = 3;
+    string type = 4;
+    int32 pump_count = 5;
+    int32 pump_hours_total = 6;
+    int32 incident_hourly_cost = 7;
+    int32 incident_notional_cost = 8;
+    string animal_group = 10;
+    string final_description = 11;
+
     message Call {
         string origin = 1;
     }
@@ -49,16 +58,6 @@ message Incident {
         double longitude = 6;
     }
 
-    int64 number = 1;
-    google.protobuf.Timestamp call_datetime = 2;
-    int32 year = 3;
-    string type = 4;
-    int32 pump_count = 5;
-    int32 pump_hours_total = 6;
-    int32 incident_hourly_cost = 7;
-    int32 incident_notional_cost = 8;
-    string animal_group = 10;
-    string final_description = 11;
     Call origin = 12;
     Property property = 13;
     SpecialService special_service = 14;

@@ -37,7 +37,7 @@ proto:
 
 .PHONY: lint
 lint:
-	$(LINTER_PATH) run --disable  errcheck --disable staticcheck ./...
+	$(LINTER_PATH) run ./...
 
 .PHONY: fmt
 fmt:
@@ -53,10 +53,3 @@ test:
 install-tools:
 	go get github.com/google/wire/cmd/wire
 	go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.46.2
-
-.PHONY: init
-init:
-	rm -f go.mod go.sum
-	go mod init $(PROJECT_PACKAGE)
-	go mod tidy
-	make install-tools
