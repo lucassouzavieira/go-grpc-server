@@ -46,7 +46,7 @@ fmt:
 .PHONY: test
 test:
 	git restore -- test/
-	$(GO) test -timeout 3m ./...
+	$(GO) test -v -cover -timeout 3m ./...
 	git restore -- test/
 
 # Utilitary commands

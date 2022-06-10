@@ -11,5 +11,5 @@ func main() {
 	log.SetOutput(os.Stdout)
 	log.SetLevel(log.InfoLevel)
 
-	serve()
+	initializeGrpcServer()
 }

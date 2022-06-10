@@ -14,12 +14,17 @@ RUN go mod download
 # Build
 RUN CGO_ENABLED=0 go build -o /build/app -a ./cmd/app
 RUN mv /build/app /app
+RUN ls -la
+RUN cp data/*.csv /
+RUN ls -la /
 
 # Final image
 FROM alpine:latest AS compile
 
 RUN apk --no-cache add ca-certificates
+# Copy image binary and data for the created image
 COPY --from=builder /app /app
+COPY --from=builder /*.csv /data/ 
 
 EXPOSE 8080
 EXPOSE 8081

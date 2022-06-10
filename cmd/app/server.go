@@ -29,7 +29,7 @@ var (
 	incident_csv = "../data/animal_rescue_incidents_attended_lfb_from_jan_2009.csv"
 )
 
-func serve() {
+func initializeGrpcServer() {
 	flag.Parse()
 
 	ctx := context.Background()
@@ -85,12 +85,12 @@ func serve() {
 	select {
 	case <-interrupt:
 		log.WithFields(log.Fields{
-			"msg": "Interrupt signal received...",
-		}).WithContext(ctx).Warn()
+			"message": "Interrupt signal received...",
+		}).WithContext(ctx).Info()
 		break
 	case <-ctx.Done():
 		log.WithFields(log.Fields{
-			"msg": "Context done...",
+			"message": "Context done...",
 		}).WithContext(ctx).Warn()
 		break
 	}
