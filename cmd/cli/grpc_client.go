@@ -24,7 +24,7 @@ func newConnection(ctx context.Context, addr string) (*grpc.ClientConn, error) {
 	conn, err := grpc.Dial(addr, opts...)
 
 	if err != nil {
-		logrus.WithError(err).Fatalf("fail to dial: %v")
+		logrus.WithError(err).Fatalf("fail to dial: %s", addr)
 		return nil, err
 	}
 
@@ -35,7 +35,7 @@ func newFleetClient(addr string) (fleet.FleetServiceClient, error) {
 	conn, err := newConnection(context.Background(), addr)
 
 	if err != nil {
-		logrus.WithError(err).Fatalf("fail to get grpc connection: %v")
+		logrus.WithError(err).Fatalf("fail to get grpc connection: %s", addr)
 		return nil, err
 	}
 
@@ -46,7 +46,7 @@ func newIncidentClient(addr string) (incident.IncidentServiceClient, error) {
 	conn, err := newConnection(context.Background(), addr)
 
 	if err != nil {
-		logrus.WithError(err).Fatalf("fail to get grpc connection: %v")
+		logrus.WithError(err).Fatalf("fail to get grpc connection: %s", addr)
 		return nil, err
 	}
 

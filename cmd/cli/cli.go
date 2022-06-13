@@ -128,9 +128,38 @@ func newCliApplication() *cli.Cli {
 		})
 
 		cmd.Command("add", "Add a new vehicle", func(cmd *cli.Cmd) {
-			// TODO implement
+			var (
+				lfb      = cmd.StringOpt("lfb", "LFB", "LFB")
+				model    = cmd.StringArg("MODEL", "", "Vehicle model")
+				make     = cmd.StringArg("MAKE", "", "Vehicle maker")
+				vType    = cmd.StringOpt("type", "Car", "Vehicle type")
+				category = cmd.StringOpt("category", "N3", "Vehicle category")
+				status   = cmd.StringOpt("op-status", "ACTIVE", "Vehicle operational status")
+				year     = cmd.IntOpt("year", time.Now().Year(), "Registration year")
+				life     = cmd.IntOpt("life", 8, "Vehicle estimated lifetime")
+			)
+
 			cmd.Action = func() {
-				logrus.Info("Add a new vehicle")
+				ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+				defer cancel()
+
+				// Add a new vehicle
+				resp, err := fleetClient.AddVehicle(ctx, &fleet.VehicleRequest{
+					OperationalStatus: *status,
+					Lfb:               *lfb,
+					Make:              *make,
+					Model:             *model,
+					Type:              *vType,
+					Category:          *category,
+					RegistrationYear:  int32(*year),
+					Life:              int32(*life),
+				})
+
+				if err != nil {
+					logrus.WithError(err).Fatal("Failed to add new vehicle list")
+				}
+
+				fmt.Println(resp)
 			}
 		})
 	})
