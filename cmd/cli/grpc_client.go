@@ -6,9 +6,6 @@ import (
 	"github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-
-	"github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/fleet"
-	"github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/incident"
 )
 
 func newConnection(ctx context.Context, addr string) (*grpc.ClientConn, error) {
@@ -29,26 +26,4 @@ func newConnection(ctx context.Context, addr string) (*grpc.ClientConn, error) {
 	}
 
 	return conn, nil
-}
-
-func newFleetClient(addr string) (fleet.FleetServiceClient, error) {
-	conn, err := newConnection(context.Background(), addr)
-
-	if err != nil {
-		logrus.WithError(err).Fatalf("fail to get grpc connection: %s", addr)
-		return nil, err
-	}
-
-	return fleet.NewFleetServiceClient(conn), nil
-}
-
-func newIncidentClient(addr string) (incident.IncidentServiceClient, error) {
-	conn, err := newConnection(context.Background(), addr)
-
-	if err != nil {
-		logrus.WithError(err).Fatalf("fail to get grpc connection: %s", addr)
-		return nil, err
-	}
-
-	return incident.NewIncidentServiceClient(conn), nil
 }

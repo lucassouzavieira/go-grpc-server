@@ -28,11 +28,14 @@ func newCliApplication() *cli.Cli {
 
 	// Incidents commands
 	app.Command("incidents", "Handle LFB incidents info", func(cmd *cli.Cmd) {
-		incidentsClient, err := newIncidentClient(*server)
+		conn, err := newConnection(context.Background(), *server)
 
 		if err != nil {
-			logrus.WithError(err).Fatal("Failed to initialize grpc Client...")
+			logrus.WithError(err).Fatalf("fail to get grpc connection: %s", *server)
+			return
 		}
+
+		incidentsClient := incident.NewIncidentServiceClient(conn)
 
 		cmd.Command("list", "List incidents", func(cmd *cli.Cmd) {
 			var (
@@ -42,6 +45,7 @@ func newCliApplication() *cli.Cli {
 			cmd.Action = func() {
 				ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 				defer cancel()
+				defer conn.Close()
 
 				// List from group
 				if len(*group) > 0 {
@@ -68,11 +72,14 @@ func newCliApplication() *cli.Cli {
 	})
 
 	app.Command("fleet", "Handle LFB fleet info", func(cmd *cli.Cmd) {
-		fleetClient, err := newFleetClient(*server)
+		conn, err := newConnection(context.Background(), *server)
 
 		if err != nil {
-			logrus.WithError(err).Fatal("Failed to initialize grpc Client...")
+			logrus.WithError(err).Fatalf("fail to get grpc connection: %s", *server)
+			return
 		}
+
+		fleetClient := fleet.NewFleetServiceClient(conn)
 
 		cmd.Command("list", "List vehicles", func(cmd *cli.Cmd) {
 			var (
@@ -84,6 +91,7 @@ func newCliApplication() *cli.Cli {
 			cmd.Action = func() {
 				ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 				defer cancel()
+				defer conn.Close()
 
 				// List all
 				if *all {
