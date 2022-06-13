@@ -6,6 +6,7 @@ import (
 	"time"
 
 	cli "github.com/jawher/mow.cli"
+	"github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/fleet"
 	"github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/incident"
 	"github.com/sirupsen/logrus"
 	"google.golang.org/protobuf/types/known/emptypb"
@@ -67,10 +68,6 @@ func newCliApplication() *cli.Cli {
 	})
 
 	app.Command("fleet", "Handle LFB fleet info", func(cmd *cli.Cmd) {
-		// list --all
-		// list --op-status
-		// list --year
-		// add
 		fleetClient, err := newFleetClient(*server)
 
 		if err != nil {
@@ -85,10 +82,6 @@ func newCliApplication() *cli.Cli {
 			)
 
 			cmd.Action = func() {
-				fmt.Printf("List all vehicles? %v", *all)
-				fmt.Printf("List by op-status? %v", *status)
-				fmt.Printf("List by year? %v", *year)
-
 				ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 				defer cancel()
 
@@ -98,6 +91,34 @@ func newCliApplication() *cli.Cli {
 
 					if err != nil {
 						logrus.WithError(err).Fatal("Failed to get vehicle list")
+					}
+
+					fmt.Println(resp)
+					return
+				}
+
+				// Get by status
+				if len(*status) > 0 {
+					resp, err := fleetClient.GetVehiclesByOpStatus(ctx, &fleet.GetVehiclesByOpStatusRequest{
+						Status: *status,
+					})
+
+					if err != nil {
+						logrus.WithError(err).Fatal("Failed to get vehicle list by status")
+					}
+
+					fmt.Println(resp)
+					return
+				}
+
+				// Get by Year
+				if *year > 0 {
+					resp, err := fleetClient.GetVehiclesByYear(ctx, &fleet.GetVehiclesByYearRequest{
+						Year: int32(*year),
+					})
+
+					if err != nil {
+						logrus.WithError(err).Fatal("Failed to get vehicle list by year")
 					}
 
 					fmt.Println(resp)
