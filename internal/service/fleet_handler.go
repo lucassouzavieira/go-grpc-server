@@ -120,11 +120,22 @@ func (h *FleetHandler) GetStats(fs []*repository.Filter) (*FleetStats, error) {
 			stats.Reserve = stats.Reserve + 1
 		}
 
-		vxAge := int32(time.Now().Year()) - v.RegistrationYear
+		vxAge := int32(time.Now().Year()) - v.GetRegistrationYear()
 		agesSum += vxAge
 	}
 
-	stats.AverageAge = float32(agesSum / int32(len(h.v)))
+	stats.AverageAge = 0
+	var denom int32 = int32(len(h.v))
+
+	if denom > 0 {
+		stats.AverageAge = float32(agesSum / denom)
+	}
+
+	for _, f := range fs {
+		log.Infof("Filters: %+v", *f)
+	}
+
+	log.Infof("Stats: %+v", stats)
 	return &stats, nil
 }
 

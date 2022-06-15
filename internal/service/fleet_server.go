@@ -2,12 +2,13 @@ package service
 
 import (
 	"context"
+	"github.com/shopspring/decimal"
 	"strings"
 
 	"github.com/lucassouzavieira/go-grpc-server/internal/repository"
 	"github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/fleet"
 	log "github.com/sirupsen/logrus"
-	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	"google.golang.org/protobuf/types/known/emptypb"
 	"k8s.io/apimachinery/pkg/util/rand"
 )
 
@@ -97,13 +98,14 @@ func (s *FleetServer) GetFleetStats(ctx context.Context, req *fleet.GetFleetStat
 	var filters = make([]*repository.Filter, 0)
 
 	if req.GetYear() != 0 {
-		yearFilter.Value = string(req.GetYear())
+		year := decimal.NewFromInt32(req.GetYear())
+		yearFilter.Value = year.StringFixed(0)
 		filters = append(filters, &yearFilter)
 	}
 
 	if len(req.GetMake()) > 0 {
 		makeFilter.Value = req.GetMake()
-		filters = append(filters, &yearFilter)
+		filters = append(filters, &makeFilter)
 	}
 
 	stats, err := fleetHandler.GetStats(filters)

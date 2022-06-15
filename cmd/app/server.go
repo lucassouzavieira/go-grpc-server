@@ -23,10 +23,10 @@ import (
 )
 
 var (
-	grpcPort     = flag.Int("grpcPort", 9200, "gRPC por")
-	grpcServer   *grpc.Server
-	fleet_csv    = "../data/lfb_fleet_list_oct_2019.csv"
-	incident_csv = "../data/animal_rescue_incidents_attended_lfb_from_jan_2009.csv"
+	grpcPort    = flag.Int("grpcPort", 9200, "gRPC por")
+	grpcServer  *grpc.Server
+	fleetCsv    = "../data/lfb_fleet_list_oct_2019.csv"
+	incidentCsv = "../data/animal_rescue_incidents_attended_lfb_from_jan_2009.csv"
 )
 
 func initializeGrpcServer() {
@@ -54,8 +54,8 @@ func initializeGrpcServer() {
 			}).WithError(err).Fatal()
 		}
 
-		fleetRepo := repository.NewRepository(fleet_csv)
-		incidentRepo := repository.NewRepository(incident_csv)
+		fleetRepo := repository.NewRepository(fleetCsv)
+		incidentRepo := repository.NewRepository(incidentCsv)
 
 		s1 := service.FleetServer{
 			Repository:                      fleetRepo,

@@ -26,7 +26,6 @@ RUN apk --no-cache add ca-certificates
 COPY --from=builder /app /app
 COPY --from=builder /*.csv /data/ 
 
-EXPOSE 8080
-EXPOSE 8081
+EXPOSE 9200
 
 CMD ["./app"]

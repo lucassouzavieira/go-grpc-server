@@ -139,7 +139,7 @@ func newCliApplication() *cli.Cli {
 			var (
 				lfb      = cmd.StringOpt("lfb", "LFB", "LFB")
 				model    = cmd.StringArg("MODEL", "", "Vehicle model")
-				make     = cmd.StringArg("MAKE", "", "Vehicle maker")
+				maker    = cmd.StringArg("MAKE", "", "Vehicle maker")
 				vType    = cmd.StringOpt("type", "Car", "Vehicle type")
 				category = cmd.StringOpt("category", "N3", "Vehicle category")
 				status   = cmd.StringOpt("op-status", "ACTIVE", "Vehicle operational status")
@@ -156,7 +156,7 @@ func newCliApplication() *cli.Cli {
 				resp, err := fleetClient.AddVehicle(ctx, &fleet.VehicleRequest{
 					OperationalStatus: *status,
 					Lfb:               *lfb,
-					Make:              *make,
+					Make:              *maker,
 					Model:             *model,
 					Type:              *vType,
 					Category:          *category,
@@ -166,6 +166,33 @@ func newCliApplication() *cli.Cli {
 
 				if err != nil {
 					logrus.WithError(err).Fatal("Failed to add new vehicle list")
+				}
+
+				fmt.Println(resp)
+			}
+		})
+
+		cmd.Command("get-stats", "Get stats info about the fleet", func(cmd *cli.Cmd) {
+			var (
+				maker = cmd.StringOpt("maker", "", "Filter by Vehicle maker")
+				year  = cmd.IntOpt("year", 0, "Filter by Registration year")
+			)
+
+			cmd.Action = func() {
+				ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+
+				defer cancel()
+				defer conn.Close()
+
+				var yearPtr = int32(*year)
+
+				var resp, err = fleetClient.GetFleetStats(ctx, &fleet.GetFleetStatsRequest{
+					Year: &yearPtr,
+					Make: maker,
+				})
+
+				if err != nil {
+					logrus.WithError(err).Fatal("Failed to get fleet stats")
 				}
 
 				fmt.Println(resp)
