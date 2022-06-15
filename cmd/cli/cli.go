@@ -150,6 +150,7 @@ func newCliApplication() *cli.Cli {
 			cmd.Action = func() {
 				ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 				defer cancel()
+				defer conn.Close()
 
 				// Add a new vehicle
 				resp, err := fleetClient.AddVehicle(ctx, &fleet.VehicleRequest{
