@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"fmt"
+	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
@@ -13,12 +13,21 @@ var (
 func TestReadFile(t *testing.T) {
 	repository := NewRepository(mockup)
 
-	content, err := repository.GetData()
+	_, err := repository.GetData()
+	if err != nil {
+		t.Error("Failed to read csv")
+	}
+}
+
+func TestGetHeaders(t *testing.T) {
+	repository := NewRepository(mockup)
+
+	headers, err := repository.GetHeaders()
 	if err != nil {
 		t.Error("Failed to read csv")
 	}
 
-	fmt.Print(content)
+	assert.Equal(t, "header1", headers[0])
 }
 
 func TestWriteFile(t *testing.T) {
@@ -32,6 +41,53 @@ func TestWriteFile(t *testing.T) {
 	}
 }
 
+func TestSingleFilter(t *testing.T) {
+	repository := NewRepository(mockup)
+
+	var filterA = Filter{
+		property: "header3",
+		value:    "data",
+	}
+
+	var filters = make([]*Filter, 0)
+	filters = append(filters, &filterA)
+
+	filtered, err := repository.Filter(filters)
+
+	if err != nil {
+		t.Error("Failed to filter data")
+	}
+
+	assert.Equal(t, 3, len(filtered))
+	assert.Equal(t, "data", filtered[0][2])
+}
+
+func TestMultipleFilters(t *testing.T) {
+	repository := NewRepository(mockup)
+
+	var filterA = Filter{
+		property: "header3",
+		value:    "ssj3",
+	}
+
+	var filterB = Filter{
+		property: "header2",
+		value:    "fake",
+	}
+
+	var filters = make([]*Filter, 0)
+	filters = append(filters, &filterA)
+	filters = append(filters, &filterB)
+
+	filtered, err := repository.Filter(filters)
+
+	if err != nil {
+		t.Error("Failed to filter data")
+	}
+
+	assert.Equal(t, 1, len(filtered))
+}
+
 func TestCount(t *testing.T) {
 	repository := NewRepository(mockup)
 
@@ -40,9 +96,5 @@ func TestCount(t *testing.T) {
 		t.Error("Failed to read csv")
 	}
 
-	var expected int32 = 3
-
-	if count != 3 {
-		t.Errorf("Expected %d lines, found %d", expected, count)
-	}
+	assert.Equal(t, 7, count)
 }

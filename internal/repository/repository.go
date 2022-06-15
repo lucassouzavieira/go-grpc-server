@@ -2,9 +2,8 @@ package repository
 
 import (
 	"encoding/csv"
-	"os"
-
 	log "github.com/sirupsen/logrus"
+	"os"
 )
 
 // Loads and handle data from our dataset
@@ -12,6 +11,11 @@ import (
 type Repository struct {
 	filepath string
 	filetype string
+}
+
+type Filter struct {
+	property string
+	value    string
 }
 
 func NewRepository(filepath string) *Repository {
@@ -45,6 +49,27 @@ func (r *Repository) GetData() ([][]string, error) {
 	}
 
 	return data, err
+}
+
+func (r *Repository) GetHeaders() ([]string, error) {
+	data, err := r.GetData()
+
+	if err != nil {
+		log.WithError(err).Error("Error while trying to read data")
+		return nil, err
+	}
+
+	headers := make([][]string, 0)
+
+	for i, v := range data {
+		headers = append(headers, v)
+
+		if i > 0 {
+			break
+		}
+	}
+
+	return headers[0], nil
 }
 
 func (r *Repository) AddData(l []string) error {
@@ -88,4 +113,45 @@ func (r *Repository) Count() (int, error) {
 	}
 
 	return len(data), err
+}
+
+func (r *Repository) Filter(fs []*Filter) ([][]string, error) {
+	data, err := r.GetData()
+
+	if err != nil {
+		log.WithError(err).Error("Error while trying to read data")
+	}
+
+	headers, err := r.GetHeaders()
+	if err != nil {
+		log.WithError(err).Error("Error while trying to read data")
+	}
+
+	getFilterIndex := func(headers []string, fs *Filter) int32 {
+		var index int32 = 0
+		for i, header := range headers {
+			if header == fs.property {
+				index = int32(i)
+				break
+			}
+		}
+
+		return index
+	}
+
+	for _, f := range fs {
+		filtered := make([][]string, 0)
+		var filterIndex = getFilterIndex(headers, f)
+
+		// Check the data to filter based on the current filter
+		for _, entry := range data {
+			if entry[filterIndex] == f.value {
+				filtered = append(filtered, entry)
+			}
+		}
+
+		data = filtered
+	}
+
+	return data, nil
 }
