@@ -4,6 +4,7 @@ package service
 import (
 	"github.com/shopspring/decimal"
 	log "github.com/sirupsen/logrus"
+	"time"
 
 	repository "github.com/lucassouzavieira/go-grpc-server/internal/repository"
 	"github.com/lucassouzavieira/go-grpc-server/pkg/protobuf/fleet"
@@ -14,11 +15,19 @@ type FleetHandler struct {
 	v []*fleet.Vehicle
 }
 
+type FleetStats struct {
+	Active     int32
+	Reserve    int32
+	Training   int32
+	AverageAge float32
+}
+
 func NewFleetHandler(r *repository.Repository) (*FleetHandler, error) {
 	data, err := r.GetData()
 
 	if err != nil {
 		log.Fatal(err)
+		return nil, err
 	}
 
 	var vehicles []*fleet.Vehicle
@@ -35,6 +44,28 @@ func NewFleetHandler(r *repository.Repository) (*FleetHandler, error) {
 		r: r,
 		v: vehicles,
 	}, nil
+}
+
+func (h *FleetHandler) Filter(fs []*repository.Filter) (bool, error) {
+	data, err := h.r.Filter(fs)
+
+	if err != nil {
+		log.Fatal(err)
+		return false, err
+	}
+
+	var vehicles []*fleet.Vehicle
+	for i, v := range data {
+		if i == 0 {
+			continue // skip headers
+		}
+
+		vehicle := vehicleFromCsv(v)
+		vehicles = append(vehicles, &vehicle)
+	}
+
+	h.v = vehicles
+	return true, nil
 }
 
 func (h *FleetHandler) GetVehicles() ([]*fleet.Vehicle, error) {
@@ -63,6 +94,38 @@ func (h *FleetHandler) GetVehiclesByYear(year int32) ([]*fleet.Vehicle, error) {
 	}
 
 	return filtered, nil
+}
+
+func (h *FleetHandler) GetStats(fs []*repository.Filter) (*FleetStats, error) {
+	_, err := h.Filter(fs)
+
+	if err != nil {
+		log.Fatal(err)
+		return nil, err
+	}
+
+	var stats = FleetStats{}
+	var agesSum int32 = 0
+
+	for _, v := range h.v {
+		if v.GetOperationalStatus() == "ACTIVE" {
+			stats.Active = stats.Active + 1
+		}
+
+		if v.GetOperationalStatus() == "TRAINING" {
+			stats.Training = stats.Training + 1
+		}
+
+		if v.GetOperationalStatus() == "RESERVE" {
+			stats.Reserve = stats.Reserve + 1
+		}
+
+		vxAge := int32(time.Now().Year()) - v.RegistrationYear
+		agesSum += vxAge
+	}
+
+	stats.AverageAge = float32(agesSum / int32(len(h.v)))
+	return &stats, nil
 }
 
 func (h *FleetHandler) SaveVehicle(v *fleet.Vehicle) (bool, error) {

@@ -47,6 +47,26 @@ func TestGetVehicles(t *testing.T) {
 	assert.Equal(t, 3, len(vehicles))
 }
 
+func TestGetStatsWithoutFilters(t *testing.T) {
+	repository := r.NewRepository(mockup)
+	handler, err := NewFleetHandler(repository)
+
+	if err != nil {
+		t.Error("Failed to create FleetHandler")
+	}
+
+	filters := make([]*r.Filter, 0)
+	stats, err := handler.GetStats(filters)
+
+	if err != nil {
+		t.Error("Failed to load data")
+	}
+
+	assert.Equal(t, int32(1), stats.Active)
+	assert.Equal(t, int32(1), stats.Training)
+	assert.Equal(t, int32(1), stats.Reserve)
+}
+
 func TestSaveVehicle(t *testing.T) {
 	repository := r.NewRepository(mockup)
 	handler, err := NewFleetHandler(repository)

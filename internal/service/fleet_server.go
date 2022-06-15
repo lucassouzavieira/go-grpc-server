@@ -76,6 +76,50 @@ func (s *FleetServer) GetVehiclesByYear(ctx context.Context, req *fleet.GetVehic
 	}, nil
 }
 
+func (s *FleetServer) GetFleetStats(ctx context.Context, req *fleet.GetFleetStatsRequest) (*fleet.GetFleetStatsResponse, error) {
+	fleetHandler, err := NewFleetHandler(s.Repository)
+
+	if err != nil {
+		log.Fatal(err)
+		return nil, err
+	}
+
+	yearFilter := repository.Filter{
+		Property: "Reg Year",
+		Value:    "0",
+	}
+
+	makeFilter := repository.Filter{
+		Property: "Make",
+		Value:    "",
+	}
+
+	var filters = make([]*repository.Filter, 0)
+
+	if req.GetYear() != 0 {
+		yearFilter.Value = string(req.GetYear())
+		filters = append(filters, &yearFilter)
+	}
+
+	if len(req.GetMake()) > 0 {
+		makeFilter.Value = req.GetMake()
+		filters = append(filters, &yearFilter)
+	}
+
+	stats, err := fleetHandler.GetStats(filters)
+	if err != nil {
+		log.Fatal(err)
+		return nil, err
+	}
+
+	return &fleet.GetFleetStatsResponse{
+		Active:     stats.Active,
+		Reserve:    stats.Reserve,
+		Training:   stats.Training,
+		AverageAge: stats.AverageAge,
+	}, nil
+}
+
 func (s *FleetServer) AddVehicle(ctx context.Context, req *fleet.VehicleRequest) (*fleet.VehicleResponse, error) {
 	fleetHandler, err := NewFleetHandler(s.Repository)
 
