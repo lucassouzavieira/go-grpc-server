@@ -14,8 +14,8 @@ type Repository struct {
 }
 
 type Filter struct {
-	property string
-	value    string
+	Property string
+	Value    string
 }
 
 func NewRepository(filepath string) *Repository {
@@ -130,7 +130,7 @@ func (r *Repository) Filter(fs []*Filter) ([][]string, error) {
 	getFilterIndex := func(headers []string, fs *Filter) int32 {
 		var index int32 = 0
 		for i, header := range headers {
-			if header == fs.property {
+			if header == fs.Property {
 				index = int32(i)
 				break
 			}
@@ -145,7 +145,7 @@ func (r *Repository) Filter(fs []*Filter) ([][]string, error) {
 
 		// Check the data to filter based on the current filter
 		for _, entry := range data {
-			if entry[filterIndex] == f.value {
+			if entry[filterIndex] == f.Value {
 				filtered = append(filtered, entry)
 			}
 		}

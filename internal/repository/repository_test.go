@@ -41,12 +41,26 @@ func TestWriteFile(t *testing.T) {
 	}
 }
 
+func TestEmptyFilter(t *testing.T) {
+	repository := NewRepository(mockup)
+
+	var filters = make([]*Filter, 0)
+	filtered, err := repository.Filter(filters)
+
+	if err != nil {
+		t.Error("Failed to filter data")
+	}
+
+	// Must do not filter anything
+	assert.Equal(t, 7, len(filtered))
+}
+
 func TestSingleFilter(t *testing.T) {
 	repository := NewRepository(mockup)
 
 	var filterA = Filter{
-		property: "header3",
-		value:    "data",
+		Property: "header3",
+		Value:    "data",
 	}
 
 	var filters = make([]*Filter, 0)
@@ -66,13 +80,13 @@ func TestMultipleFilters(t *testing.T) {
 	repository := NewRepository(mockup)
 
 	var filterA = Filter{
-		property: "header3",
-		value:    "ssj3",
+		Property: "header3",
+		Value:    "ssj3",
 	}
 
 	var filterB = Filter{
-		property: "header2",
-		value:    "fake",
+		Property: "header2",
+		Value:    "fake",
 	}
 
 	var filters = make([]*Filter, 0)
