@@ -25,6 +25,7 @@ const _ = grpc.SupportPackageIsVersion7
 type IncidentServiceClient interface {
 	ListIncidents(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*IncidentList, error)
 	GetIncidentsByAnimalGroup(ctx context.Context, in *GetIncidentsByAnimalGroupRequest, opts ...grpc.CallOption) (*IncidentList, error)
+	GetYearStats(ctx context.Context, in *GetIncidentsStatsRequest, opts ...grpc.CallOption) (*GetIncidentsStatsResponse, error)
 }
 
 type incidentServiceClient struct {
@@ -53,12 +54,22 @@ func (c *incidentServiceClient) GetIncidentsByAnimalGroup(ctx context.Context, i
 	return out, nil
 }
 
+func (c *incidentServiceClient) GetYearStats(ctx context.Context, in *GetIncidentsStatsRequest, opts ...grpc.CallOption) (*GetIncidentsStatsResponse, error) {
+	out := new(GetIncidentsStatsResponse)
+	err := c.cc.Invoke(ctx, "/incident.IncidentService/GetYearStats", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // IncidentServiceServer is the server API for IncidentService service.
 // All implementations must embed UnimplementedIncidentServiceServer
 // for forward compatibility
 type IncidentServiceServer interface {
 	ListIncidents(context.Context, *emptypb.Empty) (*IncidentList, error)
 	GetIncidentsByAnimalGroup(context.Context, *GetIncidentsByAnimalGroupRequest) (*IncidentList, error)
+	GetYearStats(context.Context, *GetIncidentsStatsRequest) (*GetIncidentsStatsResponse, error)
 	mustEmbedUnimplementedIncidentServiceServer()
 }
 
@@ -71,6 +82,9 @@ func (UnimplementedIncidentServiceServer) ListIncidents(context.Context, *emptyp
 }
 func (UnimplementedIncidentServiceServer) GetIncidentsByAnimalGroup(context.Context, *GetIncidentsByAnimalGroupRequest) (*IncidentList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetIncidentsByAnimalGroup not implemented")
+}
+func (UnimplementedIncidentServiceServer) GetYearStats(context.Context, *GetIncidentsStatsRequest) (*GetIncidentsStatsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetYearStats not implemented")
 }
 func (UnimplementedIncidentServiceServer) mustEmbedUnimplementedIncidentServiceServer() {}
 
@@ -121,6 +135,24 @@ func _IncidentService_GetIncidentsByAnimalGroup_Handler(srv interface{}, ctx con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _IncidentService_GetYearStats_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetIncidentsStatsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(IncidentServiceServer).GetYearStats(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/incident.IncidentService/GetYearStats",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(IncidentServiceServer).GetYearStats(ctx, req.(*GetIncidentsStatsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // IncidentService_ServiceDesc is the grpc.ServiceDesc for IncidentService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -135,6 +167,10 @@ var IncidentService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetIncidentsByAnimalGroup",
 			Handler:    _IncidentService_GetIncidentsByAnimalGroup_Handler,
+		},
+		{
+			MethodName: "GetYearStats",
+			Handler:    _IncidentService_GetYearStats_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

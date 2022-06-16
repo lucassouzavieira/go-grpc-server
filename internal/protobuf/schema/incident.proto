@@ -10,6 +10,7 @@ option go_package = "pkg/protobuf/incident";
 service IncidentService {
     rpc ListIncidents(google.protobuf.Empty) returns (IncidentList) {}
     rpc GetIncidentsByAnimalGroup(GetIncidentsByAnimalGroupRequest) returns (IncidentList) {}
+    rpc GetYearStats(GetIncidentsStatsRequest) returns (GetIncidentsStatsResponse) {}
 }
 
 message Incident {
@@ -71,4 +72,20 @@ message IncidentList {
 
 message GetIncidentsByAnimalGroupRequest {
     string group = 1;
+}
+
+message GetIncidentsStatsRequest {
+    int32 year = 1;
+}
+
+message GetIncidentsStatsResponse {
+    int32 year = 1;
+    int32 incidents = 2;
+
+    message GroupStats {
+        string animal_group = 1;
+        int32 incidents = 2;
+    }
+
+    repeated GroupStats groups = 3;
 }
