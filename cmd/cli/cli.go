@@ -69,6 +69,30 @@ func newCliApplication() *cli.Cli {
 				fmt.Println(resp)
 			}
 		})
+
+		cmd.Command("get-stats", "Get stats info about incidents from a particular year", func(cmd *cli.Cmd) {
+			var (
+				year  = cmd.IntOpt("year", time.Now().Year(), "Get incidents stats from a specific year")
+			)
+
+			cmd.Action = func() {
+				ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+
+				defer cancel()
+				defer conn.Close()
+
+				var resp, err = incidentsClient.GetYearStats(ctx, &incident.GetIncidentsStatsRequest{
+					Year: int32(*year),
+				})
+
+				if err != nil {
+					logrus.WithError(err).Fatal("Failed to get incident stats")
+				}
+
+				fmt.Println(resp)
+			}
+		})
+
 	})
 
 	app.Command("fleet", "Handle LFB fleet info", func(cmd *cli.Cmd) {
