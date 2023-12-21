@@ -1,4 +1,4 @@
-FROM golang:1.18-alpine AS builder
+FROM golang:1.21-alpine AS builder
 
 ENV APP=go-grpc-server
 ENV GO111MODULE=on
